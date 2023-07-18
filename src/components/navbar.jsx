@@ -1,9 +1,10 @@
 import styled from "@emotion/styled";
 import { BiSearch } from "react-icons/bi";
 import { AiOutlineUserAdd } from "react-icons/ai";
+import Button from "./ui/button";
 
 const Main = styled.div`
-  width:100%
+  width: 100%;
   box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.2);
 `;
 
@@ -73,6 +74,11 @@ function NavBar() {
       <NavContainer>
         <TopMenu>
           <Logo src="src/assets/GTHLogo.png" />
+          <Button type="primary">Random</Button>
+          <Button type="secondary">
+            <BiSearch/>
+            Random
+          </Button>
           <Menu>
             <SearchButton>
               <BiSearch />

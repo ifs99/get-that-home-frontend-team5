@@ -63,6 +63,11 @@ export const colors = {
   
   black: "#333333",
   "light-gray": "#f6f6f9",
-  gray: "#B8B8BB",
+  gray: "#616161",
   orange: "#FA4A0C",
+  primary: {
+    pink: "#F48FB1",
+    dark_pink: "#BF5F82",
+    shadow_pink: "rgba(244, 143, 177, 0.15)",
+  }
 };
