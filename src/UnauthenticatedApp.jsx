@@ -9,6 +9,7 @@ import Layout from "./components/Layout/Layout";
 import Input from "./components/ui/input";
 import Select from "./components/ui/select";
 import Header from "./components/Header/header";
+import Hero from "./components/Hero/Hero";
 
 const Background = styled.img`
   width: 100%;
@@ -24,7 +25,9 @@ function UnauthenticatedApp() {
   return (
     <Layout>
       <Header></Header>{/* Add routes here */}
-      <MainContainer>Hola soy el Main Container</MainContainer>
+      <MainContainer>
+        <Hero/>
+      </MainContainer>
       <Footer>Hola soy el footer</Footer>
     </Layout>
   );
