@@ -11,15 +11,12 @@ import CreateAccount from "./components/CreateAccount/CreateAccount";
 import CheckSelect from "./components/ui/CheckSelect/CheckSelect";
 import CustomSelect from "./components/ui/CustomSelect/CustomSelect";
 import React from "react";
-import { colors } from "./styles";
-import NavBar from "./components/navbar";
-import GuestFooter from "./components/footer";
+import LogedinFooter from "./components/Footer/logedinfooter";
 
 const MainContainer = styled.div`
   flex-grow: 1;
 `;
 
-const Footer = styled.div``;
 
 function UnauthenticatedApp() {
   return (
@@ -30,7 +27,7 @@ function UnauthenticatedApp() {
         <CreateAccount />
         <MeetTeam />
       </MainContainer>
-      <Footer>Hola soy el footer</Footer>
+      <LogedinFooter/>
     </Layout>
   );
 }

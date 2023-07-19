@@ -1,12 +1,13 @@
 import styled from "@emotion/styled";
-import { typography } from "../styles";
-import { DiRubyRough } from "react-icons/ri";
+import { typography } from "../../styles";
+import { DiRuby, DiReact } from "react-icons/di";
 
-const Footer = styled.footer`
+const FooterContainer = styled.footer`
   display: flex;
   justify-content: space-around;
   width: 100%;
   ${typography.text.sm}
+  background-color: #F5F5F6;
 `;
 const Container = styled.div`
   display: flex;
@@ -17,7 +18,7 @@ const Container = styled.div`
 const SmallContainer = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   margin: 0.5rem 5rem;
 `;
@@ -25,12 +26,22 @@ const SmallContainer = styled.div`
 const IconContainer = styled.div`
   display: flex;
   flex-direction: row;
-  margin: 0 2rem;
+  margin: 0 4rem;
+  gap: 1rem;
+`;
+
+const LittleContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  margin: 0 5 rem;
+  align-items: center;
+  color: gray;
+  gap: 0.25rem;
 `;
 
 function GuestFooter() {
   return (
-    <Footer>
+    <FooterContainer>
       <Container>
         <SmallContainer>
           <p>© 202X - Find That Home</p>
@@ -38,29 +49,21 @@ function GuestFooter() {
         <SmallContainer>
           <p>Source Code</p>
           <IconContainer>
-            <DiRubyRough />
-            <p>Ruby on Rails REST API</p>
-            <p>React Responsive SPA</p>
+            <LittleContainer>
+              <DiRuby />
+              <p>Ruby on Rails REST API</p>
+            </LittleContainer>
+            <LittleContainer>
+              <DiReact />
+              <p>React Responsive SPA</p>
+            </LittleContainer>
           </IconContainer>
         </SmallContainer>
         <SmallContainer>
           <p>Codeable - Cohort 10 Final Project</p>
         </SmallContainer>
       </Container>
-    </Footer>
+    </FooterContainer>
   );
 }
 export default GuestFooter;
-
-// function LogFooter(){
-//   return(<Container>
-//   </Container>)
-// }
-// export default LogFooter
-
-// function Footer() {
-//   return <>
-//   </>;
-// }
-
-// export default Footer;
