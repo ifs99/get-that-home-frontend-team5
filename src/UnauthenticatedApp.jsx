@@ -13,6 +13,7 @@ import CustomSelect from "./components/ui/CustomSelect/CustomSelect";
 import React from "react";
 import LogedinFooter from "./components/Footer/logedinfooter";
 import GuestFooter from"./components/Footer/guestfooter"
+import PropertyCard from "./components/PropertyCard/propertycard";
 
 const MainContainer = styled.div`
   flex-grow: 1;
@@ -27,6 +28,7 @@ function UnauthenticatedApp() {
         <Hero />
         <CreateAccount />
         <MeetTeam />
+        <PropertyCard/>
       </MainContainer>
       <LogedinFooter/>
     </Layout>
