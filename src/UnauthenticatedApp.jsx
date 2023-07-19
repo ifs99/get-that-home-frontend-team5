@@ -21,11 +21,10 @@ const MainContainer = styled.div`
 `;
 
 const CardContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  gap: 2rem;
-  align-items: center;
-  justify-content: space-evenly;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  place-items: center;
+  column-gap:2rem;
 `;
 
 const TextContainer = styled.div`
