@@ -33,6 +33,10 @@ export const typography = {
     `,
   },
   head: {
+    xxs: `
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    `,
     xs: `
     font-size: 1.25rem;
     line-height: 1.75rem;
@@ -63,7 +67,7 @@ export const typography = {
 for (const size in typography.head) {
   typography.head[size] += `
   font-family: ${fonts.primary};
-  font-weight: 600;
+  font-weight: 400;
   `;
 }
 
