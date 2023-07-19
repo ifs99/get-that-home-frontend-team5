@@ -11,22 +11,25 @@ const FooterContainer = styled.footer`
 `;
 const Container = styled.div`
   display: flex;
-  padding: 1rem 1.9375rem;
+  padding: 1rem 2rem;
   align-items: center;
+  max-width: 1200px;
+  width: 100%;
+  justify-content: space-between;
+  color: #373737;
 `;
 
 const SmallContainer = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  margin: 0.5rem 5rem;
 `;
 
 const IconContainer = styled.div`
   display: flex;
   flex-direction: row;
-  margin: 0 4rem;
+  justify-content: center;
   gap: 1rem;
 `;
 
@@ -35,7 +38,7 @@ const LittleContainer = styled.div`
   flex-direction: row;
   margin: 0 5 rem;
   align-items: center;
-  color: gray;
+  color: #373737;
   gap: 0.25rem;
 `;
 
@@ -50,11 +53,11 @@ function GuestFooter() {
           <p>Source Code</p>
           <IconContainer>
             <LittleContainer>
-              <DiRuby />
+              <DiRuby size={16} />
               <p>Ruby on Rails REST API</p>
             </LittleContainer>
             <LittleContainer>
-              <DiReact />
+              <DiReact size={16} />
               <p>React Responsive SPA</p>
             </LittleContainer>
           </IconContainer>

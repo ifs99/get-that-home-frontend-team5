@@ -19,6 +19,7 @@ const Container = styled.div`
   max-width: 1200px;
   width: 100%;
   justify-content: space-between;
+  color: #616161;
 `;
 
 const SmallContainer = styled.div`
@@ -32,7 +33,6 @@ const SmallContainer = styled.div`
 const IconContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
-
   gap: 0.5rem;
   justify-content: left;
 `;
@@ -68,7 +68,7 @@ function LogedinFooter() {
           <p>Codeable - Cohort 10 Final Project</p>
         </SmallContainer>
         <SmallContainer>
-          <p>Build with ❤ by:</p>
+          <p>Build with{"\uD83D\uDC97"}by:</p>
           <IconContainer>
             <Member>
               <BsGithub size={16} />
