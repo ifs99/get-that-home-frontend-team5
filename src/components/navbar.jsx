@@ -2,6 +2,7 @@ import styled from "@emotion/styled";
 import { BiSearch } from "react-icons/bi";
 import { AiOutlineUserAdd } from "react-icons/ai";
 import Button from "./ui/button";
+import Input from "./ui/input";
 
 const Main = styled.div`
   width: 100%;
@@ -27,7 +28,7 @@ const TopMenu = styled.div`
 `;
 
 const Logo = styled.img`
-  width: 1.8rem;
+  width: 10rem;
 `;
 
 const Menu = styled.div`
@@ -47,51 +48,25 @@ const SearchButton = styled.button`
   border-radius: 1rem;
 `;
 
-const ButtonJoin = styled.button`
-  display: flex;
-  padding: 0.5rem 1rem;
-  align-items: center;
-  gap: 0.5rem;
-  border-radius: 1rem;
-  border: 1px solid var(--pink, #f48fb1);
-`;
-
-const ButtonLogin = styled.button`
-  display: flex;
-  padding: 0.5rem 1rem;
-  align-items: center;
-  gap: 0.5rem;
-  border-radius: 1rem;
-  border-color: white;
-  background: var(--pink, #f48fb1);
-  border: 1px solid var(--pink, #f48fb1);
-  color: white;
-`;
-
 function NavBar() {
   return (
     <Main>
       <NavContainer>
         <TopMenu>
           <Logo src="src/assets/GTHLogo.png" />
-          <Button type="primary">Random</Button>
-          <Button type="secondary">
-            <BiSearch/>
-            Random
-          </Button>
           <Menu>
-            <SearchButton>
+            <Button>
               <BiSearch />
               FIND A HOME
-            </SearchButton>
-            <ButtonJoin>
+            </Button>
+            <Button type="secondary">
               <AiOutlineUserAdd />
               JOIN
-            </ButtonJoin>
-            <ButtonLogin>
+            </Button>
+            <Button type="primary">
               <AiOutlineUserAdd />
               LOGIN
-            </ButtonLogin>
+            </Button>
           </Menu>
         </TopMenu>
       </NavContainer>

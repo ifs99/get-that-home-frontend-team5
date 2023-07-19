@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { colors } from "./styles";
 import NavBar from "./components/navbar";
 import Layout from "./components/Layout/Layout";
+import Input from "./components/ui/input";
 
 const Background = styled.img`
   width: 100%;
