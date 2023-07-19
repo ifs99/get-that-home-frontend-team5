@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { colors } from "./styles";
 import NavBar from "./components/navbar";
 import Layout from "./components/Layout/Layout";
+import MeetTeam from "./components/MeetTeam/MeetTeam";
 
 const Background = styled.img`
   width: 100%;
@@ -24,7 +25,10 @@ function AuthenticatedApp() {
     <Layout>
       <Header>Hola soy el Header Autenticado</Header>
       {/* Add routes here */}
-      <MainContainer>Hola soy el Main Container</MainContainer>
+      <MainContainer>
+        
+        <MeetTeam />
+      </MainContainer>
       <Footer>Hola soy el footer</Footer>
     </Layout>
   );
