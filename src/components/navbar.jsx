@@ -18,7 +18,7 @@ function NavBar() {
   const [role, setRole] = useState("");
   const handleLogin = (roleId) => {
     // Implementar logica de login
-    setRole(roleId);
+    setRole("1");
   };
 
   const handleLogout = () => {
