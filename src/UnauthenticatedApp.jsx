@@ -1,6 +1,11 @@
 import styled from "@emotion/styled";
 import Layout from "./components/Layout/Layout";
 import Header from "./components/Header/header";
+import Hero from "./components/Hero/Hero";
+
+const Background = styled.img`
+  width: 100%;
+`;
 import MeetTeam from "./components/MeetTeam/MeetTeam";
 import CreateAccount from "./components/CreateAccount/CreateAccount";
 import CheckSelect from "./components/ui/CheckSelect/CheckSelect";
@@ -17,7 +22,8 @@ function UnauthenticatedApp() {
     <Layout>
       <Header />
       <MainContainer>
-        <CreateAccount/>
+        <Hero />
+        <CreateAccount />
         <MeetTeam />
       </MainContainer>
       <Footer>Hola soy el footer</Footer>
