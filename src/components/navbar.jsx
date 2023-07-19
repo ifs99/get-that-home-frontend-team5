@@ -1,7 +1,10 @@
 import styled from "@emotion/styled";
 import { BiSearch } from "react-icons/bi";
-import { AiOutlineUserAdd } from "react-icons/ai";
+import { AiOutlineUserAdd, AiFillHeart } from "react-icons/ai";
+import { BiLogOutCircle } from "react-icons/bi";
+import {RiHome8Line} from "react-icons/ri"
 import Button from "./ui/button";
+import { useState } from "react";
 
 const Menu = styled.div`
   display: flex;
@@ -12,20 +15,68 @@ const Menu = styled.div`
 `;
 
 function NavBar() {
+  const [role, setRole] = useState("");
+  const handleLogin = (roleId) => {
+    // Implementar logica de login
+    setRole(roleId);
+  };
+
+  const handleLogout = () => {
+    setRole("");
+  };
+
   return (
     <Menu>
       <Button size="sm">
         <BiSearch />
         FIND A HOME
       </Button>
-      <Button type="secondary" size="sm">
-        <AiOutlineUserAdd />
-        JOIN
-      </Button>
-      <Button type="primary" size="sm">
-        <AiOutlineUserAdd />
-        LOGIN
-      </Button>
+      {role === "" ? (
+        <>
+          {/* Render these buttons when logged in */}
+          <Button type="secondary" size="sm">
+            <AiOutlineUserAdd />
+            JOIN
+          </Button>
+          <Button type="primary" size="sm" onClick={handleLogin}>
+            <AiOutlineUserAdd />
+            LOGIN
+          </Button>
+        </>
+      ) : role === "seeker" ? (
+        <>
+          {/* Render these buttons when not logged in */}
+          <Button type="secondary" size="sm" onClick={handleLogout}>
+            <BiLogOutCircle />
+            LOGOUT
+          </Button>
+          <Button type="primary" size="sm">
+            <AiFillHeart />
+            SAVED PROPERTIES
+          </Button>
+          <Button type="primary" size="sm">
+            <AiOutlineUserAdd />
+            PROFILE
+          </Button>
+        </>
+      ) : role === "landlord" ? (
+        <>
+          {/* Render these buttons when not logged in */}
+          <Button type="secondary" size="sm" onClick={handleLogout}>
+            <BiLogOutCircle />
+            LOGOUT
+          </Button>
+          <Button type="primary" size="sm">
+            <RiHome8Line />
+            MY PROPERTIES
+          </Button>
+          <Button type="primary" size="sm">
+            <AiOutlineUserAdd />
+            PROFILE
+          </Button>
+        </>
+      ) : null}{" "}
+      {}
     </Menu>
   );
 }
