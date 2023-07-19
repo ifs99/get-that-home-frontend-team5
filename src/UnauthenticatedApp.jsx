@@ -20,10 +20,10 @@ const Footer = styled.div``;
 function UnauthenticatedApp() {
   return (
     <Layout>
-      <Header/>
+      <Header />
       <MainContainer>
-        <Hero/>
-        <CreateAccount/>
+        <Hero />
+        <CreateAccount />
         <MeetTeam />
       </MainContainer>
       <Footer>Hola soy el footer</Footer>

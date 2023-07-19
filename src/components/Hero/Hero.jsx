@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
 import bg_image from "../../assets/GTHBackground.png";
+import Search from "../Search/Search";
 
 const HeroContainer = styled.div`
   background-image: url(${bg_image});
@@ -12,7 +13,7 @@ const HeroContainer = styled.div`
   align-items: flex-start;
   position: relative;
   padding-top: 60px;
-  z-index: -1;
+  /* z-index: -1; */
 `;
 
 const HeroContent = styled.div`
@@ -48,7 +49,7 @@ function Hero() {
       <HeroContent>
         <HeroTitle>Meet your new Home</HeroTitle>
         <HeroSlogan>The easiest way to find where you belong</HeroSlogan>
-        <div>La wea dificil</div>
+        <Search />
       </HeroContent>
     </HeroContainer>
   );
