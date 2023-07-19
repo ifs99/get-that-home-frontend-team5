@@ -43,9 +43,9 @@ function NavBar() {
             LOGIN
           </Button>
         </>
-      ) : role === "seeker" ? (
+      ) : role === "1" ? (
         <>
-          {/* Render these buttons when not logged in */}
+          {/* Render these buttons when seeker logged in */}
           <Button type="secondary" size="sm" onClick={handleLogout}>
             <BiLogOutCircle />
             LOGOUT
@@ -59,9 +59,9 @@ function NavBar() {
             PROFILE
           </Button>
         </>
-      ) : role === "landlord" ? (
+      ) : role === "2" ? (
         <>
-          {/* Render these buttons when not logged in */}
+          {/* Render these buttons when landlord logged in */}
           <Button type="secondary" size="sm" onClick={handleLogout}>
             <BiLogOutCircle />
             LOGOUT
