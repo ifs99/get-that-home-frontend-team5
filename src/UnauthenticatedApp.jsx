@@ -24,7 +24,7 @@ const CardContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   place-items: center;
-  column-gap:2rem;
+  column-gap: 2rem;
 `;
 
 const TextContainer = styled.div`
