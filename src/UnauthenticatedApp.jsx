@@ -10,6 +10,10 @@ import MeetTeam from "./components/MeetTeam/MeetTeam";
 import CreateAccount from "./components/CreateAccount/CreateAccount";
 import CheckSelect from "./components/ui/CheckSelect/CheckSelect";
 import CustomSelect from "./components/ui/CustomSelect/CustomSelect";
+import React from "react";
+import { colors } from "./styles";
+import NavBar from "./components/navbar";
+import GuestFooter from "./components/footer";
 
 const MainContainer = styled.div`
   flex-grow: 1;
