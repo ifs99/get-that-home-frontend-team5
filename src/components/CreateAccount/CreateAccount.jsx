@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import Button from "../ui/button";
 
 const CreateAccountSection = styled.section`
   background: rgba(244, 143, 177, 0.15);
@@ -32,7 +33,7 @@ function CreateAccount() {
         <Text>
           Getting someone to rent your apartment has never been this easy
         </Text>
-        <button>CREATE AN ACCOOUNT NOW</button>
+        <Button type="primary">CREATE AN ACCOOUNT NOW</Button>
       </Container>
     </CreateAccountSection>
   );

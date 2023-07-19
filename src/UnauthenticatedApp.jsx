@@ -4,8 +4,6 @@ import Header from "./components/Header/header";
 import MeetTeam from "./components/MeetTeam/MeetTeam";
 import CreateAccount from "./components/CreateAccount/CreateAccount";
 
-
-
 const MainContainer = styled.div`
   flex-grow: 1;
 `;
