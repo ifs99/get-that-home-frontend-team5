@@ -3,6 +3,7 @@ import { typography } from "../../styles";
 import { colors } from "../../styles";
 import { BiSearch } from "react-icons/bi";
 import { RiArrowDropDownLine } from "react-icons/ri";
+import { RiUploadLine } from "react-icons/ri";
 
 const StyledInput = styled("input")`
   display: flex;
@@ -18,6 +19,7 @@ const StyledInput = styled("input")`
   ::placeholder {
     color: gray; /* Customize the placeholder color */
   }
+  ${(props) => typeStyles(props.type)}
 `;
 
 const StyledLabel = styled.label`
@@ -27,7 +29,6 @@ const StyledLabel = styled.label`
 
 const InputBox = styled.div`
   position: relative;
-  display: inline-block;
 `;
 
 const IconWrapper = styled.div`
@@ -42,17 +43,59 @@ const LeftIconWrapper = styled(IconWrapper)`
 `;
 
 const RightIconWrapper = styled(IconWrapper)`
-  right: 0.5rem; 
+  right: 0.5rem;
 `;
+
+const FileIconWrapper = styled.div`
+  position: absolute;
+  top: 72.5%;
+  transform: translateY(-50%);
+  color: gray;
+  left: 0.6rem;
+`;
+
+function typeStyles(type) {
+  switch (type) {
+    case "file":
+      return `
+        color: ${colors.gray};
+        border:none;
+        ${typography.text.sm}
+
+          
+        }
+        ::file-selector-button {
+          border: 2px solid ${colors.primary.pink};
+          padding: .2em .4em;
+          border-radius: .2em;
+          background-color: ${colors.primary.pink};
+          color: ${colors.white};
+          transition: 1s;
+        ::file-selector-button:hover {
+          background-color: ${colors.primary.dark_pink};
+          border: 2px solid #00cec9;
+      `;
+
+    default:
+      return `
+      border: 1px solid ${colors.primary.pink};
+      color: ${colors.gray};
+      &:focus {
+        outline: 2px solid ${colors.primary.dark_pink};
+      }
+      `;
+  }
+}
 
 function Input({
   id,
-  type = "text",
+  type,
   name,
-  value,
-  onChange,
   placeholder,
   label,
+  buttonText,
+  buttonIcon,
+  ...props
 }) {
   return (
     <>
@@ -62,17 +105,24 @@ function Input({
           id={id}
           type={type}
           name={name}
-          value={value}
-          onChange={onChange}
           placeholder={placeholder}
+          {...props}
         />
-        <LeftIconWrapper>
-          <BiSearch size={20} />
-        </LeftIconWrapper>
-
-        <RightIconWrapper>
-          <RiArrowDropDownLine size={20} />{" "}
-        </RightIconWrapper>
+        {type === "file" && (
+          <FileIconWrapper>
+            <RiUploadLine />
+          </FileIconWrapper>
+        )}
+        {type !== "file" && (
+          <>
+            <LeftIconWrapper>
+              <BiSearch size={20} />
+            </LeftIconWrapper>
+            <RightIconWrapper>
+              <RiArrowDropDownLine size={20} />{" "}
+            </RightIconWrapper>
+          </>
+        )}
       </InputBox>
     </>
   );
