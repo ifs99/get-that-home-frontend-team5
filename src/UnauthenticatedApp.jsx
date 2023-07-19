@@ -22,9 +22,11 @@ const MainContainer = styled.div`
 
 const CardContainer = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  margin: auto;
+  grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
   place-items: center;
   column-gap: 2rem;
+  max-width: 1000px;
 `;
 
 const TextContainer = styled.div`
