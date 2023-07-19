@@ -8,7 +8,7 @@ const Container = styled.div`
   width: 18.75rem;
   height: 22.5rem;
   position: relative;
-  border-radius: 0.5rem;
+  border-top-radius: 0.5rem;
   box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.2);
 `;
 
@@ -18,6 +18,8 @@ const ImgContainer = styled.img`
   height: 12.5rem;
   justify-content: center;
   align-items: center;
+  border-top-right-radius: 0.5rem;
+  border-top-left-radius: 0.5rem;
 `;
 
 const Content = styled.div`
@@ -26,7 +28,7 @@ const Content = styled.div`
   height: 10rem;
   position: relative;
   gap: 1rem;
-  padding:0.5rem
+  padding: 0.5rem;
 `;
 
 const RentData = styled.div`
@@ -41,6 +43,8 @@ const ColorBack = styled.div`
   flex-shrink: 0;
   align-self: stretch;
   display: flex;
+  border-bottom-right-radius: 0.5rem;
+  border-bottom-left-radius: 0.5rem;
 `;
 
 const DataLabel = styled.div`
@@ -53,8 +57,8 @@ const DataLabel = styled.div`
 const DataProp = styled.div`
   display: flex;
   flex-direction: row;
-  gap:5rem;
-  height:3rem;
+  gap: 5rem;
+  height: 3rem;
 `;
 
 const Card = styled.div`
@@ -65,7 +69,7 @@ const Card = styled.div`
 const PropInfo = styled.div`
   display: flex;
   flex-direction: column;
-  gap:1rem;
+  gap: 1rem;
 `;
 
 const CardChip = styled.div`
@@ -80,6 +84,7 @@ const CardChip = styled.div`
   align-items: center;
   gap: 0.25rem;
   padding: 0.25rem 0.5rem;
+  border-top-right-radius: 0.5rem;
 `;
 
 const InfoContainer = styled.div`
@@ -151,8 +156,8 @@ function PropertyCard() {
             </PropInfo>
           </RentData>
         </Content>
+        <ColorBack></ColorBack>
       </Card>
-      <ColorBack></ColorBack>
     </Container>
   );
 }
