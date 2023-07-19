@@ -63,7 +63,7 @@ export const typography = {
 for (const size in typography.head) {
   typography.head[size] += `
   font-family: ${fonts.primary};
-  font-weight: 600;
+  font-weight: 400;
   `;
 }
 

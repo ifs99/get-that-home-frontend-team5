@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { colors } from "../../styles";
+import { colors, typography, fonts } from "../../styles";
 import { RiCoinsFill, RiBuildingLine } from "react-icons/ri";
 import { BiDollarCircle, BiBed, BiBath, BiArea } from "react-icons/bi";
 import { FaPaw } from "react-icons/fa";
@@ -25,9 +25,15 @@ const Content = styled.div`
   width: 18.75rem;
   height: 10rem;
   position: relative;
+  gap: 1rem;
+  padding:0.5rem
 `;
 
-const RentData = styled.div``;
+const RentData = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+`;
 
 const ColorBack = styled.div`
   background-color: ${colors.primary.dark_pink};
@@ -40,11 +46,15 @@ const ColorBack = styled.div`
 const DataLabel = styled.div`
   display: flex;
   flex-direction: row;
+  align-items: center;
+  gap: 1rem;
 `;
 
 const DataProp = styled.div`
   display: flex;
   flex-direction: row;
+  gap:5rem;
+  height:3rem;
 `;
 
 const Card = styled.div`
@@ -52,7 +62,11 @@ const Card = styled.div`
   flex-direction: column;
 `;
 
-const PropInfo = styled.div``;
+const PropInfo = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap:1rem;
+`;
 
 const CardChip = styled.div`
   display: flex;
@@ -62,16 +76,38 @@ const CardChip = styled.div`
   right: 0;
   z-index: 1;
   background-color: ${colors.primary.pink};
+  color: white;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.25rem 0.5rem;
 `;
 
 const InfoContainer = styled.div`
   display: flex;
   flex-direction: row;
+  align-items: center;
 `;
 
 const IconWrap = styled.div`
   display: flex;
   flex-direction: row;
+  align-items: center;
+  gap: 0.25rem;
+`;
+
+const Head5 = styled.p`
+  ${typography.head.sm}
+  ${fonts.primary}
+`;
+
+const Body1 = styled.p`
+  ${typography.text.md}
+  ${fonts.secondary}
+`;
+
+const Sub1 = styled.p`
+  ${typography.text.md}
+  ${fonts.primary}
 `;
 
 function PropertyCard() {
@@ -87,30 +123,30 @@ function PropertyCard() {
           <RentData>
             <DataProp>
               <InfoContainer>
-                <BiDollarCircle />
-                <p>Precio</p>
+                <BiDollarCircle size={32} />
+                <Head5>3000</Head5>
               </InfoContainer>
               <InfoContainer>
-                <RiBuildingLine />
-                <p>Tipo de prop</p>
+                <RiBuildingLine size={24} />
+                <Body1>Apartment</Body1>
               </InfoContainer>
             </DataProp>
             <PropInfo>
-              <p>Direccion</p>
+              <Sub1>86872 Jacob Gateway, Durganport, WV 48044</Sub1>
               <DataLabel>
                 <IconWrap>
-                  <BiBed />
-                  <p>cama</p>
+                  <BiBed size={24} />
+                  <p>4</p>
                 </IconWrap>
                 <IconWrap>
-                  <BiBath />
-                  <p>baño</p>
+                  <BiBath size={24} />
+                  <p>2</p>
                 </IconWrap>
                 <IconWrap>
-                  <BiArea />
-                  <p>area</p>
+                  <BiArea size={24} />
+                  <p>180 m2</p>
                 </IconWrap>
-                <FaPaw />
+                <FaPaw size={24} />
               </DataLabel>
             </PropInfo>
           </RentData>
