@@ -4,6 +4,7 @@ import { colors } from "./styles";
 import NavBar from "./components/navbar";
 import Layout from "./components/Layout/Layout";
 import Hero from "./components/Hero/Hero";
+import MeetTeam from "./components/MeetTeam/MeetTeam";
 
 const Background = styled.img`
   width: 100%;
@@ -27,6 +28,7 @@ function AuthenticatedApp() {
       {/* Add routes here */}
       <MainContainer>
         <Hero />
+        <MeetTeam />
       </MainContainer>
       <Footer>Hola soy el footer</Footer>
     </Layout>

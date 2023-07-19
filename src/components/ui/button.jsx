@@ -29,16 +29,25 @@ function typeStyles(type) {
           background-color: ${colors.primary.shadow_pink};
         }
         &:active {
-          background-color: ${colors.stone[700]};
+          background-color: ${colors.primary.shadow_pink};
         }
         &:focus {
-          outline: 2px solid ${colors.stone[700]};
+          outline: 2px solid ${colors.primary.shadow_pink};
         }
       `;
 
     default:
       return `
         background: none;
+        &:hover {
+          background-color: ${colors.primary.shadow_pink};
+        }
+        &:active {
+          background-color: ${colors.primary.shadow_pink};
+        }
+        &:focus {
+          outline: 2px solid ${colors.primary.shadow_pink};
+        }
       `;
   }
 }
