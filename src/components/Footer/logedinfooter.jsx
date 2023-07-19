@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { typography } from "../../styles";
+import { colors, typography } from "../../styles";
 import { DiRuby, DiReact } from "react-icons/di";
 import { BsGithub } from "react-icons/bs";
 import Logo from "../logo";
@@ -14,8 +14,11 @@ const FooterContainer = styled.footer`
 `;
 const Container = styled.div`
   display: flex;
-  padding: 1rem 1.9375rem;
+  padding: 1rem 2rem;
   align-items: center;
+  max-width: 1200px;
+  width: 100%;
+  justify-content: space-between;
 `;
 
 const SmallContainer = styled.div`
@@ -23,7 +26,6 @@ const SmallContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: left;
-  margin: 0.5rem 5rem;
   gap: 0.25rem;
 `;
 
@@ -43,12 +45,17 @@ const LittleContainer = styled.div`
   justify-content: left;
   color: gray;
   gap: 0.25rem;
+  align-items: center;
 `;
 
 const Member = styled.div`
   display: flex;
   align-items: center;
   gap: 0.5rem;
+`;
+
+const Text = styled.p`
+  ${colors.gray}
 `;
 
 function LogedinFooter() {
@@ -64,21 +71,21 @@ function LogedinFooter() {
           <p>Build with ❤ by:</p>
           <IconContainer>
             <Member>
-              <BsGithub />
-              <p>Cristhian Turpo</p>
+              <BsGithub size={16} />
+              <p>Crhistian Turpo</p>
             </Member>
             <Member>
-              <BsGithub />
+              <BsGithub size={16} />
               <p>Rossio Lachos</p>
             </Member>
           </IconContainer>
           <IconContainer>
             <Member>
-              <BsGithub />
+              <BsGithub size={16} />
               <p>Manuel Aguilar</p>
             </Member>
             <Member>
-              <BsGithub />
+              <BsGithub size={16} />
               <p>Italo Flores</p>
             </Member>
           </IconContainer>
@@ -86,11 +93,11 @@ function LogedinFooter() {
         <SmallContainer>
           <p>Source Code</p>
           <LittleContainer>
-            <DiRuby />
+            <DiRuby size={16} />
             <p>Ruby on Rails REST API</p>
           </LittleContainer>
           <LittleContainer>
-            <DiReact />
+            <DiReact size={16} />
             <p>React Responsive SPA</p>
           </LittleContainer>
         </SmallContainer>
