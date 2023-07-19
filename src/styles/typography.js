@@ -1,10 +1,16 @@
 export const fonts = {
-  primary: `"Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+  primary: `"Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+  Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif`,
+  secondary: `"Inter",  -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
   Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif`,
 };
 
 export const typography = {
   text: {
+    xxs: `
+    font-size: 0.625rem;
+    line-height: 1rem;
+    `,
     xs: `
     font-size: 0.75rem;
     line-height: 1rem;
@@ -54,15 +60,15 @@ export const typography = {
   },
 };
 
-for (const size in typography.text) {
-  typography.text[size] += `
+for (const size in typography.head) {
+  typography.head[size] += `
   font-family: ${fonts.primary};
+  font-weight: 600;
   `;
 }
 
-for (const size in typography.head) {
-  typography.head[size] += `
+for (const size in typography.text) {
+  typography.text[size] += `
   font-family: ${fonts.secondary};
-  font-weight: 600;
   `;
 }
