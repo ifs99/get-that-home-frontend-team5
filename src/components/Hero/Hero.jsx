@@ -11,9 +11,7 @@ const HeroContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  position: relative;
   padding-top: 60px;
-  /* z-index: -1; */
 `;
 
 const HeroContent = styled.div`
