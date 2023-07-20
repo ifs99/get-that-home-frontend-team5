@@ -6,6 +6,7 @@ import GuestMainContainer from "./components/GuestMainContainer/GuestMainContain
 import Signup from "./components/Signup/Signup";
 import LogedinFooter from "./components/Footer/logedinfooter";
 import SignupForm from "./components/SignupForm/SignupForm";
+import PropertyDetail from "./components/PropertyDetail/propertydetail";
 
 function UnauthenticatedApp() {
   return (
@@ -13,7 +14,7 @@ function UnauthenticatedApp() {
       <Header />
       <Routes>
         {/* <Route index element={<Navigate to="" replace={true}/>}/> */}
-        <Route exact path="/" element={<GuestMainContainer />} />
+        <Route exact path="/" element={<PropertyDetail />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/signup/homeseeker" element={<SignupForm />} />
         <Route path="/signup/landlord" element={<SignupForm />} />
