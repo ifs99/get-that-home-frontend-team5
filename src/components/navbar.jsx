@@ -10,6 +10,7 @@ import Input from "./ui/Input/Input";
 import Modal from "./ui/Modal/Modal";
 import {RiUserReceived2Line} from "react-icons/ri";
 import { useAuth } from "../context/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 const Menu = styled.div`
   display: flex;
@@ -21,6 +22,7 @@ const Menu = styled.div`
 
 function NavBar() {
   const [role, setRole] = useState("");
+  const navigate = useNavigate()
   const {setUser} = useAuth()
 
   const [isLoginModalOpen, setIsModalLoginOpen] = useState(false);
@@ -38,6 +40,9 @@ function NavBar() {
     setRole("");
   };
 
+  const handleJoin = () => {
+    navigate("/signup")
+  }
   return (
     <>
       <Menu>
@@ -47,7 +52,7 @@ function NavBar() {
         </Button>
         {role === "" ? (
           <>
-            <Button type="secondary" size="sm">
+            <Button type="secondary" size="sm" onClick={handleJoin}>
               <AiOutlineUserAdd />
               JOIN
             </Button>
