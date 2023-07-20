@@ -24,7 +24,7 @@ const StyledInput = styled("input")`
 
 const StyledLabel = styled.label`
   ${typography.text.xxs}
-  text-transform: uppercase
+  text-transform: uppercase;
 `;
 
 const InputBox = styled.div`

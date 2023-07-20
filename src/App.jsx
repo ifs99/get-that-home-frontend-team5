@@ -1,22 +1,11 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { global, reset } from "./styles";
-import { Global } from "@emotion/react";
-
 import UnauthenticatedApp from "./UnauthenticatedApp";
-import { useState } from "react";
 import AuthenticatedApp from "./AuthenticatedApp";
+import { useAuth } from "./context/AuthContext";
 
 function App() {
-  const [user, setUser] = useState(false)
-  return (
-    <BrowserRouter>
-      <>
-        <Global styles={reset} />
-        <Global styles={global} />
-        {user ? <AuthenticatedApp/> : <UnauthenticatedApp/>}
-      </>
-    </BrowserRouter>
-  );
+  const { user } = useAuth();
+  console.log(user)
+  return <>{user ? <AuthenticatedApp /> : <UnauthenticatedApp />}</>;
 }
 
 export default App;

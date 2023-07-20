@@ -1,20 +1,14 @@
 import styled from "@emotion/styled";
+
 import Layout from "./components/Layout/Layout";
 import Header from "./components/Header/header";
 import Hero from "./components/Hero/Hero";
-
-const Background = styled.img`
-  width: 100%;
-`;
 import MeetTeam from "./components/MeetTeam/MeetTeam";
 import CreateAccount from "./components/CreateAccount/CreateAccount";
-import CheckSelect from "./components/ui/CheckSelect/CheckSelect";
-import CustomSelect from "./components/ui/CustomSelect/CustomSelect";
-import React from "react";
 import LogedinFooter from "./components/Footer/logedinfooter";
-import GuestFooter from "./components/Footer/guestfooter";
 import PropertyCard from "./components/PropertyCard/propertycard";
-import { colors, typography, fonts } from "./styles";
+import { typography, fonts } from "./styles";
+import { Routes } from "react-router-dom";
 
 const MainContainer = styled.div`
   flex-grow: 1;
