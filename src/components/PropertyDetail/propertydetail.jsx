@@ -217,7 +217,7 @@ function PropertyDetail() {
             </Body1>
           </PDAbout>
           <PDMap>
-            <p>Location</p>
+            <Headline6 style={{ color: `#BF5F82` }}>Location</Headline6>
             <img src="src/assets/PDMap.png" />
           </PDMap>
         </PD>
