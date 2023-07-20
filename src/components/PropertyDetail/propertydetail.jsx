@@ -3,8 +3,7 @@ import Button from "../ui/button";
 import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
 import { BiDollarCircle, BiBed, BiBath, BiArea } from "react-icons/bi";
 import { FaPaw } from "react-icons/fa";
-
-import { typography, fonts } from "../../styles";
+import { typography, fonts, colors } from "../../styles";
 
 const PropertyDetailContainer = styled.div`
   display: flex;
@@ -59,10 +58,6 @@ const PropertyImageContainer = styled.div`
   align-self: stretch;
 `;
 
-const Body1 = styled.p`
-  text-align: center;
-`;
-
 const PDTitle = styled.div`
   display: flex;
   align-items: flex-start;
@@ -79,13 +74,10 @@ const PDAddress = styled.div`
 const PDPriceContainer = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  gap: 0.625rem;
-  align-self: stretch;
+  align-items: flex-end;
 `;
 const PDPrice = styled.div`
   display: flex;
-
   align-items: center;
   gap: 0.5rem;
 `;
@@ -109,11 +101,12 @@ const PDComIcons = styled.div`
   justify-content: space-between;
   align-items: center;
   align-self: stretch;
+  color: #616161;
 `;
 
 const Icon = styled.div`
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   gap: 0.25rem;
 `;
 
@@ -129,6 +122,36 @@ const PDMap = styled.div`
   flex-direction: column;
   align-items: flex-start;
   gap: 0.5rem;
+`;
+
+const Headline4 = styled.p`
+  ${typography.head.lg}
+  color:#373737;
+`;
+
+const Subtitle1 = styled.p`
+  ${typography.head.sub1}
+  color: #616161;
+`;
+
+const Headline5 = styled.p`
+  ${typography.head.sm}
+`;
+
+const Headline6 = styled.p`
+  ${typography.head.xs}
+  color:#373737;
+`;
+
+const Body1 = styled.p`
+  ${typography.text.md}
+  color:#373737;
+`;
+
+const Body1C = styled.p`
+  ${typography.text.md}
+  color:#373737;
+  text-align: center;
 `;
 function PropertyDetail() {
   return (
@@ -146,16 +169,16 @@ function PropertyDetail() {
         <PD>
           <PDTitle>
             <PDAddress>
-              <p>Francisco de Paula Ugarriza 27</p>
-              <p>Miraflores</p>
+              <Headline4>Francisco de Paula Ugarriza 27</Headline4>
+              <Subtitle1>Miraflores</Subtitle1>
             </PDAddress>
             <PDPriceContainer>
               <PDPrice>
-                <BiDollarCircle size={24} />
-                <p>3000</p>
+                <BiDollarCircle size={35} color="#616161" />
+                <Headline4>3000</Headline4>
               </PDPrice>
               <PDPrice>
-                <p>+100</p>
+                <Headline6>+100</Headline6>
               </PDPrice>
             </PDPriceContainer>
           </PDTitle>
@@ -164,31 +187,34 @@ function PropertyDetail() {
             <PDComIcons>
               <Icon>
                 <BiBed size={24} />
-                <p>4</p>
+                <Headline5>4 bedrooms</Headline5>
               </Icon>
               <Icon>
                 <BiBath size={24} />
-                <p>2</p>
+                <Headline5>2 bathrooms</Headline5>
               </Icon>
               <Icon>
                 <BiArea size={24} />
-                <p>180 m2</p>
+                <Headline5>180 m2</Headline5>
               </Icon>
               <Icon>
                 <FaPaw size={24} />
+                <Headline5>Pets allowed</Headline5>
               </Icon>
             </PDComIcons>
             <PDBorder></PDBorder>
           </PDCommodities>
           <PDAbout>
-            <p>About this property</p>
-            <p>
+            <Headline6 style={{ color: `#BF5F82` }}>
+              About this property
+            </Headline6>
+            <Body1>
               3 Bedroom/2 Bathroom apartment available for ASAP move-in!
               Apartment features hardwood floors throughout, virtual doorman,
               Central AC/heat, dishwasher and a microwave. The kitchen has
               custom cabinetry and the living room is big enough to fit a dinner
               table, a couch and a tv set up.
-            </p>
+            </Body1>
           </PDAbout>
           <PDMap>
             <p>Location</p>
@@ -198,7 +224,7 @@ function PropertyDetail() {
       </PropertyInfo>
       <PropertyContact>
         <ContactContainer>
-          <Body1>Log in or Join to contact the advertiser</Body1>
+          <Body1C>Log in or Join to contact the advertiser</Body1C>
           <Button type="primary">Login</Button>
         </ContactContainer>
       </PropertyContact>
