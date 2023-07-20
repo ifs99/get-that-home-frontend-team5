@@ -8,6 +8,7 @@ const Heading = styled.div`
   box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.2);
   position: relative;
   z-index: 10;
+  height: 56px;
 `;
 
 const HeaderContainer = styled.div`
