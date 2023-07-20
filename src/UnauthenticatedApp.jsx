@@ -14,7 +14,7 @@ function UnauthenticatedApp() {
       <Header />
       <Routes>
         {/* <Route index element={<Navigate to="" replace={true}/>}/> */}
-        <Route exact path="/" element={<PropertyDetail />} />
+        <Route exact path="/" element={<UnauthenticatedApp />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/signup/homeseeker" element={<SignupForm />} />
         <Route path="/signup/landlord" element={<SignupForm />} />
