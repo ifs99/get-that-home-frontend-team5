@@ -12,6 +12,8 @@ import {RiUserReceived2Line} from "react-icons/ri";
 import { useAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 
+
+
 const Menu = styled.div`
   display: flex;
   justify-content: flex-end;
@@ -23,22 +25,37 @@ const Menu = styled.div`
 function NavBar() {
   const [role, setRole] = useState("");
   const navigate = useNavigate()
-  const {setUser} = useAuth()
+  const {login, logout} = useAuth()
+  
 
   const [isLoginModalOpen, setIsModalLoginOpen] = useState(false);
+
+  const [formData, setFormData] = useState({
+    email: "code@able.com",
+    password: "123456MERe3",
+  });
+
+  const { email, password } = formData;
+
+  function handleChange(event) {
+    const { name, value } = event.target;
+    setFormData({ ...formData, [name]: value });
+  }
+
+  function handleSubmit(event) {
+    event.preventDefault();
+    setIsModalLoginOpen(false);
+    login(formData);
+   
+  }
 
   const handleLogin = () => {
     setIsModalLoginOpen(true);
   };
 
-  const handleSubmit = () => {
-    setUser("Someone")
-    setIsModalLoginOpen(false);
-  };
-
-  const handleLogout = () => {
-    setRole("");
-  };
+  const handleLogout = async () => {
+    await logout()
+  }
 
   const handleJoin = () => {
     navigate("/signup")
@@ -59,6 +76,10 @@ function NavBar() {
             <Button type="primary" size="sm" onClick={handleLogin}>
               <AiOutlineUserAdd />
               LOGIN
+            </Button>
+            <Button type="secondary" size="sm" onClick={handleLogout}>
+              <AiOutlineUserAdd />
+              LOGOUT
             </Button>
           </>
         ) : role === "1" ? (
@@ -106,8 +127,24 @@ function NavBar() {
         ]}
       >
         <form>
-          <Input label="Email" type="email" placeholder="user@mail.com"/>
-          <Input label="Password" type="password" placeholder="******"/>
+          <Input 
+          id="email"
+          name="email"
+          type="email"
+          placeholder="user@mail.com"
+          value={email}
+          onChange={handleChange}
+          label="Email"
+          />
+          <Input 
+           id="password"
+           name="password"
+           type="password"
+           placeholder="******"
+           value={password}
+           onChange={handleChange}
+           label="Password"
+          />
         </form>
       </Modal>
     </>
