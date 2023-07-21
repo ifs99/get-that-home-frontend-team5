@@ -16,6 +16,8 @@ import FavoriteProperties from "./components/HomeSeeker/favoriteproperties";
 import FavoriteContacted from "./components/HomeSeeker/Contactedproperties";
 
 import FindHome from "./components/HomeSeeker/findhome";
+import PropertiesList from "./components/PropertiesList/PropertiesList";
+import NewPropertyForm from "./components/NewPropertyForm/NewPropertyForm";
 
 const MainContainer = styled.div`
   flex-grow: 1;
@@ -49,6 +51,7 @@ function AuthenticatedApp() {
             <Route index element={<Navigate to="/active" />} />
             <Route path="/active" element={<Landlord />} />
             <Route path="/closed" element={<Landlordclosedproperties />} />
+            <Route path="/newproperty" element={<NewPropertyForm />} />
           </>
         ) : (
           <>

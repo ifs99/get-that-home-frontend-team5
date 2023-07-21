@@ -20,3 +20,8 @@ export async function getPropertiefavorite() {
 export async function getPropertieContacted() {
   return await ApiFetch("/contacted")
 }
+export async function createProperty(property_data) {
+  return await ApiFetch("/properties", {
+    body: property_data
+  })
+}

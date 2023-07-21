@@ -11,10 +11,7 @@ const StyledCustomSelect = styled(Select)`
   position: 1;
 `;
 
-function CustomSelect({ options }) {
-  const handleChange = (value) => {
-    console.log(`selected ${value}`);
-  };
+function CustomSelect({ options, handleChange }) {
   return (
     <StyledCustomSelect
       onChange={handleChange}

@@ -40,7 +40,7 @@ function Landlord(){
      function   handleAddProperty(){
 
      }
-    
+    console.log(propertiesactived)
     return(
         <>
         <Button type="primary" onClick={handleAddProperty}>

@@ -1,17 +1,21 @@
-
-
 import PropertyCard from "../PropertyCard/propertycard";
 import styled from "@emotion/styled";
 import Input from "../ui/Input/Input";
 import { useAuth } from "../../context/AuthContext";
+import { Popover } from "antd";
+import Button from "../ui/button";
+import PriceFilter from "../Filters/PriceFilter/PriceFilter";
 
 const PropertiesListMainContianer = styled.div`
   flex-grow: 1;
   margin: auto;
   width: 1200px;
+  padding: 32px 0;
 `;
 const FiltersWrapper = styled.div`
   display: flex;
+  align-items: center;
+  justify-content: space-between;
 `;
 
 const StyledCounter = styled.h6`
@@ -32,9 +36,14 @@ const PropertiesListContainer = styled.div`
   place-items: center;
 `;
 
-function PropertiesList({properties}) {
+const FiltersContainer = styled.div`
+  display: flex;
+  gap: 0.5rem;
+`;
+
+function PropertiesList({ properties }) {
   const { user } = useAuth();
-  console.log(properties)
+  console.log(properties);
 
   const getMessage = () => {
     if (properties.length === 0) return "No properties Found";
@@ -46,18 +55,35 @@ function PropertiesList({properties}) {
 
   return (
     <PropertiesListMainContianer>
-      
-
       {user.user_type === "Landlord" ? (
-            <>
-            </>
-          ) : (
-            <FiltersWrapper>
-            <Input placeholer="Search by address" />
-            <div>some filters</div>
-            <Input placeholer="operation type" />
-          </FiltersWrapper>
-          )}
+        <></>
+      ) : (
+        <FiltersWrapper>
+          <Input placeholer="Search by address" />
+          <div>some filters</div>
+          <Input placeholer="operation type" />
+        </FiltersWrapper>
+      )}
+      <FiltersWrapper>
+        <div style={{ width: "150px" }}>
+          <Input placeholer="Search by address" />
+        </div>
+        <FiltersContainer>
+          <PriceFilter />
+          <Popover placement="bottom">
+            <Button type="primary">PROPERTY TYPE</Button>
+          </Popover>
+          <Popover placement="bottom">
+            <Button type="primary">BEDS & BATHS</Button>
+          </Popover>
+          <Popover placement="bottom">
+            <Button type="primary">MORE</Button>
+          </Popover>
+        </FiltersContainer>
+        <div style={{ width: "150px" }}>
+          <Input placeholer="operation type" />
+        </div>
+      </FiltersWrapper>
       <StyledCounter>{properties_counter}</StyledCounter>
       <PropertiesListContainer>
         {properties.map((property) => (
