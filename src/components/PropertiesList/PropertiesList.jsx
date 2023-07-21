@@ -12,9 +12,12 @@ const PropertiesListMainContianer = styled.div`
   flex-grow: 1;
   margin: auto;
   width: 1200px;
+  padding: 32px 0;
 `;
 const FiltersWrapper = styled.div`
   display: flex;
+  align-items: center;
+  justify-content: space-between;
 `;
 
 const StyledCounter = styled.h6`
@@ -37,6 +40,7 @@ const PropertiesListContainer = styled.div`
 
 const FiltersContainer = styled.div`
   display: flex;
+  gap: 0.5rem;
 `;
 
 function PropertiesList() {
@@ -57,9 +61,11 @@ function PropertiesList() {
   return (
     <PropertiesListMainContianer>
       <FiltersWrapper>
-        <Input placeholer="Search by address" />
+        <div style={{ width: "150px" }}>
+          <Input placeholer="Search by address" />
+        </div>
         <FiltersContainer>
-          <PriceFilter/>
+          <PriceFilter />
           <Popover placement="bottom">
             <Button type="primary">PROPERTY TYPE</Button>
           </Popover>
@@ -70,7 +76,9 @@ function PropertiesList() {
             <Button type="primary">MORE</Button>
           </Popover>
         </FiltersContainer>
-        <Input placeholer="operation type" />
+        <div style={{ width: "150px" }}>
+          <Input placeholer="operation type" />
+        </div>
       </FiltersWrapper>
       <StyledCounter>{properties_counter}</StyledCounter>
       <PropertiesListContainer>
