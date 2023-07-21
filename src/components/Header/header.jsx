@@ -1,6 +1,8 @@
 import styled from "@emotion/styled";
-import NavBar from "../navbar";
 import Logo from "../logo";
+import { useAuth } from "../../context/AuthContext";
+import UserNavBar from "../NavBar/UserNavBar";
+import GuestNavBar from "../NavBar/GuestNavBar";
 
 const Heading = styled.div`
   width: 100%;
@@ -22,11 +24,13 @@ const HeaderContainer = styled.div`
 `;
 
 function Header() {
+  const {user} = useAuth()
+  console.log("from header ", user)
   return (
     <Heading>
       <HeaderContainer>
         <Logo />
-        <NavBar></NavBar>
+        { user ? <UserNavBar/> : <GuestNavBar/>}
       </HeaderContainer>
     </Heading>
   );

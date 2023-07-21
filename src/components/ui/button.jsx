@@ -85,6 +85,8 @@ const StyledButton = styled.button`
   line-height: 1em;
   cursor: pointer;
 
+  letter-spacing: 1.25px;
+
   width: ${({ isFullWidth }) => (isFullWidth ? "100%" : "fit-content")};
   padding: 0.75rem ${({ rounded }) => (rounded ? "0.75rem" : "1rem")};
   border-radius: ${({ rounded }) => (rounded ? "999px" : "1rem")};
