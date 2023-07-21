@@ -7,29 +7,33 @@ import Layout from "./components/Layout/Layout";
 import Header from "./components/Header/header";
 import LogedinFooter from "./components/Footer/logedinfooter";
 import { Routes, Route, Navigate } from "react-router-dom";
-
-const Background = styled.img`
-  width: 100%;
-`;
+import PropertiesList from "./components/PropertiesList/PropertiesList";
 
 const MainContainer = styled.div`
   flex-grow: 1;
 `;
 
+function Algo() {
+  return (
+    <MainContainer>
+      <Hero />
+      <MeetTeam />
+    </MainContainer>
+  );
+}
+
 function AuthenticatedApp() {
   return (
     <Layout>
-      <Header>Hola soy el Header Autenticado</Header>
+      <Header />
       <Routes>
         <Route path="/">
-          <Route index element={<Navigate to="/products" />} />
-          <Route path="products" element={<MeetTeam />} />
+          {/* <Route index element={<Navigate to="/" />} /> */}
+          <Route path="/" element={<Algo />} />
+          <Route path="/propertieslist" element={<PropertiesList />} />
         </Route>
       </Routes>
-      <MainContainer>
-        <Hero />
-        <MeetTeam />
-      </MainContainer>
+
       <LogedinFooter></LogedinFooter>
     </Layout>
   );

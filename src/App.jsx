@@ -4,7 +4,6 @@ import { useAuth } from "./context/AuthContext";
 
 function App() {
   const { user } = useAuth();
-  console.log(user)
   return <>{user ? <AuthenticatedApp /> : <UnauthenticatedApp />}</>;
 }
 
