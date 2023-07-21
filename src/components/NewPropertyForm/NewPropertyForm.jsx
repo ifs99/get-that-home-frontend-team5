@@ -6,6 +6,43 @@ import CustomSelect from "../ui/CustomSelect/CustomSelect";
 import TextArea from "antd/es/input/TextArea";
 import Button from "../ui/button";
 import "./newpropertyform.css";
+import { S3Client, PutObjectCommand } from "@aws-sdk/client-s3";
+
+import manu from '../../assets/blobManual.png'
+import { createProperty } from "../../services/PropertyServices";
+
+// const bucketName = process.env.AWS_BUCKET_NAME
+// const region = process.env.AWS_BUCKET_REGION
+// const accessKeyId = process.env.AWS_ACCESS_KEY
+// const secretAccessKey = process.env.AWS_SECRET_KEY
+//** TODO: move to helpers fils*/
+const bucketName = "gethomeprueba3";
+const region = "us-west-2";
+const accessKeyId = "AKIAYBB2XLPBPQQYZ6SG";
+const secretAccessKey = "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";
+
+const client = new S3Client({
+  region: region,
+  credentials: {
+    accessKeyId: accessKeyId,
+    secretAccessKey: secretAccessKey,
+  },
+});
+
+async function uploadFile(pathFile) {
+  const stream = fs.createReadStream(pathFile);
+  const uploadParams = {
+    Bucket: bucketName,
+    Body: stream,
+    Key: "archivoprueba.jpg",
+  };
+
+  const command = new PutObjectCommand(uploadParams);
+  const response = await client.send(command);
+  return response;
+}
+
+
 
 const NewPropertyFormContainer = styled.div`
   flex-grow: 1;
@@ -116,7 +153,6 @@ const PhotosDescription = styled.div`
 `;
 
 function NewPropertyForm() {
-
   const [propertyForm, setPropertyForm] = useState({
     operation_type: "Rent",
     location: "",
@@ -220,11 +256,22 @@ function NewPropertyForm() {
     setPropertyForm({ ...propertyForm, images: newImages });
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     console.log(propertyForm);
+    for (const imageFile of propertyForm.images) {
+      const uploadParams = {
+        Bucket: 'gethomeprueba3',
+        Key: imageFile.details.name,
+        Body: imageFile.details,
+      };
+      const command = new PutObjectCommand(uploadParams);
+      await client.send(command);
+    }
+    await createProperty(propertyForm)
   };
 
+  
   return (
     <NewPropertyFormContainer>
       <NewPropertyWrapper>
@@ -262,7 +309,10 @@ function NewPropertyForm() {
           />
           <OperationTypeWrapper>
             <span>Property type</span>
-            <Radio.Group onChange={handlePropertyTypeChange} value={property_type}>
+            <Radio.Group
+              onChange={handlePropertyTypeChange}
+              value={property_type}
+            >
               <Radio value="Apartment">Apartment</Radio>
               <Radio value="House">House</Radio>
             </Radio.Group>
@@ -318,7 +368,7 @@ function NewPropertyForm() {
               onChange={handleAboutProperty}
             />
           </div>
-          <div style={{display: "flex", flexDirection: "column", gap: "8px"}}>
+          <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
             <StyledTitle>Photos</StyledTitle>
             <div>
               <PhotosDescription>Upload as many as you wish</PhotosDescription>
