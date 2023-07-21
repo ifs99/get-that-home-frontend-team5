@@ -1,8 +1,9 @@
-import { useEffect, useState } from "react";
+
 
 import PropertyCard from "../PropertyCard/propertycard";
 import styled from "@emotion/styled";
 import Input from "../ui/Input/Input";
+import { useAuth } from "../../context/AuthContext";
 
 const PropertiesListMainContianer = styled.div`
   flex-grow: 1;
@@ -32,6 +33,8 @@ const PropertiesListContainer = styled.div`
 `;
 
 function PropertiesList({properties}) {
+  const { user } = useAuth();
+  console.log(properties)
 
   const getMessage = () => {
     if (properties.length === 0) return "No properties Found";
@@ -43,11 +46,18 @@ function PropertiesList({properties}) {
 
   return (
     <PropertiesListMainContianer>
-      <FiltersWrapper>
-        <Input placeholer="Search by address" />
-        <div>some filters</div>
-        <Input placeholer="operation type" />
-      </FiltersWrapper>
+      
+
+      {user.user_type === "Landlord" ? (
+            <>
+            </>
+          ) : (
+            <FiltersWrapper>
+            <Input placeholer="Search by address" />
+            <div>some filters</div>
+            <Input placeholer="operation type" />
+          </FiltersWrapper>
+          )}
       <StyledCounter>{properties_counter}</StyledCounter>
       <PropertiesListContainer>
         {properties.map((property) => (

@@ -1,5 +1,5 @@
 import Button from "../ui/button";
-import { getPropertiesactived } from "../../services/propertyServices";
+import { getPropertiesclosed } from "../../services/propertyServices";
 import PropertiesList from "../PropertiesList/PropertiesList";
 import { useState, useEffect } from "react";
 import { FaPlusCircle } from "react-icons/fa";
@@ -30,11 +30,11 @@ const NavDiv = styled.div`
   gap: 50px;
 `;
 
-function Landlord(){
+function Landlordclosedproperties(){
     const [propertiesactived, setPropertiesactived] = useState ([]);
 
         useEffect (() => {
-        getPropertiesactived().then((data) => setPropertiesactived(data));
+        getPropertiesclosed().then((data) => setPropertiesactived(data));
         }, []);
    
      function   handleAddProperty(){
@@ -49,7 +49,7 @@ function Landlord(){
         </Button>
         <NavDiv>
                 <NavWord
-                to={"/"}
+                to={"/active"}
                 style={({ isActive }) => ({
                 color: isActive ? colors.stone[600] : colors.stone[400],
                 })}
@@ -71,4 +71,4 @@ function Landlord(){
     )
 }
 
-export default Landlord
+export default Landlordclosedproperties

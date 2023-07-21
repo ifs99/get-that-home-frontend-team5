@@ -1,11 +1,10 @@
-import Button from "../ui/button";
-import { getPropertiesactived } from "../../services/propertyServices";
+
 import PropertiesList from "../PropertiesList/PropertiesList";
 import { useState, useEffect } from "react";
-import { FaPlusCircle } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
 import styled from "@emotion/styled";
 import { colors } from "../../styles";
+import { getPropertiefavorite } from "../../services/propertyServices";
 
 const NavWord = styled(NavLink)`
 border: none;
@@ -30,45 +29,37 @@ const NavDiv = styled.div`
   gap: 50px;
 `;
 
-function Landlord(){
-    const [propertiesactived, setPropertiesactived] = useState ([]);
+function FavoriteProperties(){
+    const [propertiefavorite, setPropertiesfavorite] = useState ([]);
 
         useEffect (() => {
-        getPropertiesactived().then((data) => setPropertiesactived(data));
+        getPropertiefavorite().then((data) => setPropertiesfavorite(data));
         }, []);
-   
-     function   handleAddProperty(){
-
-     }
     
     return(
         <>
-        <Button type="primary" onClick={handleAddProperty}>
-            <FaPlusCircle size={24} />
-            NEW PROPERTY
-        </Button>
         <NavDiv>
                 <NavWord
-                to={"/"}
+                to={"/favorites"}
                 style={({ isActive }) => ({
                 color: isActive ? colors.stone[600] : colors.stone[400],
                 })}
             >
-            ACTIVE
+            FAVORITES
             </NavWord>
             <NavWord
-                to={"/closed"}
+                to={"/contacted"}
                 style={({ isActive }) => ({
                 color: isActive ? colors.stone[600] : colors.stone[400],
                 })}
             >
-            CLOSED
+            CONTACTED
             </NavWord>
         </NavDiv>
-        <PropertiesList properties = {propertiesactived}/>
+        <PropertiesList properties = {propertiefavorite}/>
         </>
 
     )
 }
 
-export default Landlord
+export default FavoriteProperties

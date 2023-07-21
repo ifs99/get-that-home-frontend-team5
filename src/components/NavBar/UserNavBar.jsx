@@ -4,8 +4,10 @@ import { AiOutlineUserAdd, AiFillHeart } from "react-icons/ai";
 import { BiLogOutCircle } from "react-icons/bi";
 import { RiHome8Line } from "react-icons/ri";
 
+
 import Button from "../ui/button";
 import { useAuth } from "../../context/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 const Menu = styled.div`
   display: flex;
@@ -19,17 +21,36 @@ function UserNavBar() {
   const { user } = useAuth();
   const { logout } = useAuth();
 
+  const navegate = useNavigate()
+  
   const handleLogout = async () => {
     await logout();
   };
 
+  function handleProperties(){
+
+    navegate("/properties")
+
+  }
+
+  function handlesavedproperties(){
+    navegate("/favorites")
+  }
+
   return (
     <>
       <Menu>
-        <Button>
-          <BiSearch size={24} />
-          FIND A HOME
-        </Button>
+
+      {user.user_type === "Landlord" ? (
+          <></>
+          ) : (
+
+            <Button onClick={handleProperties}>
+            <BiSearch size={24} />
+            FIND A HOME
+          </Button>
+            
+          )}   
         <>
           <Button type="secondary" onClick={handleLogout}>
             <BiLogOutCircle size={24} />
@@ -42,10 +63,12 @@ function UserNavBar() {
               MY PROPERTIES
             </Button>
           ) : (
-            <Button type="primary">
-              <AiFillHeart size={24} />
-              SAVED PROPERTIES
-            </Button>
+                <Button type="primary" onClick={handlesavedproperties}>
+                  <AiFillHeart size={24} />
+                  SAVED PROPERTIES
+                </Button>
+            
+            
           )}
 
           <Button type="primary">

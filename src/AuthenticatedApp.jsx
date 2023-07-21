@@ -7,8 +7,15 @@ import Layout from "./components/Layout/Layout";
 import Header from "./components/Header/header";
 import LogedinFooter from "./components/Footer/logedinfooter";
 import { Routes, Route, Navigate } from "react-router-dom";
-import Landlord from "./components/Landlord/Landlord";
+import Landlordclosedproperties from "./components/Landlord/Landlordclosedproperties";
 import { useAuth } from "./context/AuthContext";
+import Landlord from "./components/Landlord/Landlord";
+import { getProperties } from "./services/propertyServices";
+import { useState, useEffect } from "react";
+import FavoriteProperties from "./components/HomeSeeker/favoriteproperties";
+import FavoriteContacted from "./components/HomeSeeker/Contactedproperties";
+
+import FindHome from "./components/HomeSeeker/findhome";
 
 const MainContainer = styled.div`
   flex-grow: 1;
@@ -24,18 +31,35 @@ function Algo() {
 }
 
 function AuthenticatedApp() {
-
   const { user } = useAuth();
+
+  const [properties, setProperties] = useState ([]);
+
+  useEffect (() => {
+    
+  getProperties().then((data) => setProperties(data));
+  }, []);
 
   return (
     <Layout>
       <Header />
       <Routes>
-        <Route path="/">
-          {/* <Route index element={<Navigate to="/" />} /> */}
- 
-           {user.user_type == "Landlord" ? <Route path="/" element={<Landlord/>}/> : <Route path="/" element= {<>HomeSeeker</>}/>}
-        </Route>
+        {user.user_type == "Landlord" ? (
+          <>
+            <Route index element={<Navigate to="/active" />} />
+            <Route path="/active" element={<Landlord />} />
+            <Route path="/closed" element={<Landlordclosedproperties />} />
+          </>
+        ) : (
+          <>
+          <Route index element={<Navigate to="/"/>} />
+          <Route path="/properties" element={<FindHome properties ={properties}/>} />
+          <Route path="/favorites" element={<FavoriteProperties/>} />
+          <Route path="/contacted" element={<FavoriteContacted/>} />
+          </>
+          
+        )}
+       
       </Routes>
 
       <LogedinFooter></LogedinFooter>
