@@ -9,7 +9,7 @@ import "./newpropertyform.css";
 import { S3Client, PutObjectCommand } from "@aws-sdk/client-s3";
 
 import manu from '../../assets/blobManual.png'
-import { createProperty } from "../../services/PropertyServices";
+import { createProperty } from "../../services/propertyServices";
 
 // const bucketName = process.env.AWS_BUCKET_NAME
 // const region = process.env.AWS_BUCKET_REGION
@@ -268,7 +268,24 @@ function NewPropertyForm() {
       const command = new PutObjectCommand(uploadParams);
       await client.send(command);
     }
-    await createProperty(propertyForm)
+    const propertydata = {
+    
+        operation_type: propertyForm.operation_type,
+        location: propertyForm.location,
+        price: propertyForm.monthly_rent,
+        property_type: propertyForm.property_type,
+        maintanance: propertyForm.maintanance,
+        bathroom: propertyForm.bathrooms,
+        petfriendly: propertyForm.pets_allowed,
+        bedroom: propertyForm.bedrooms,
+        area: propertyForm.area,
+        description: propertyForm.about_property,
+        name_image: propertyForm.images[0].details.name
+
+    }
+
+    console.log(propertydata)
+    await createProperty(propertydata)
   };
 
   

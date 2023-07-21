@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 import PropertyCard from "../PropertyCard/propertycard";
-import { getProperties } from "../../services/PropertyServices";
+
 import styled from "@emotion/styled";
 import Input from "../ui/Input/Input";
 import { Popover } from "antd";
