@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
 import CustomSelect from "../ui/CustomSelect/CustomSelect";
 import Button from "../ui/button";
+import { useNavigate } from "react-router-dom";
 
 const SearchContainer = styled.div`
   display: flex;
@@ -21,6 +22,8 @@ const VerticalDivider = styled.div`
 `;
 
 function Search() {
+const navigate = useNavigate()
+
   const property_types = [
     { value: "jack", label: "Jack" },
     { value: "jack", label: "Jack" },
@@ -33,7 +36,7 @@ function Search() {
       <VerticalDivider />
       <CustomSelect options={property_types} />
       <VerticalDivider />
-      <Button type="primary">SEARCH</Button>
+      <Button type="primary" onClick={() => navigate("/propertieslist")}>SEARCH</Button>
     </SearchContainer>
   );
 }

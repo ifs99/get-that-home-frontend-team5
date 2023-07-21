@@ -25,7 +25,7 @@ const HeaderContainer = styled.div`
 
 function Header() {
   const {user} = useAuth()
-  console.log("from header ", user)
+  
   return (
     <Heading>
       <HeaderContainer>

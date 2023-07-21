@@ -5,7 +5,7 @@ import { BiDollarCircle, BiBed, BiBath, BiArea } from "react-icons/bi";
 import { FaPaw } from "react-icons/fa";
 
 const Container = styled.div`
-  width: 18.75rem;
+  width: 300px;
   height: 22.5rem;
   position: relative;
   border-top-right-radius: 0.5rem;
@@ -116,7 +116,7 @@ const Sub1 = styled.p`
   ${fonts.primary}
 `;
 
-function PropertyCard() {
+function PropertyCard({location}) {
   return (
     <Container>
       <CardChip>
@@ -138,7 +138,7 @@ function PropertyCard() {
               </InfoContainer>
             </DataProp>
             <PropInfo>
-              <Sub1>86872 Jacob Gateway, Durganport, WV 48044</Sub1>
+              <Sub1>{location}</Sub1>
               <DataLabel>
                 <IconWrap>
                   <BiBed size={24} />
