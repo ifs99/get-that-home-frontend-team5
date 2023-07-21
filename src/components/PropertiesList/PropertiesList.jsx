@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 
 import PropertyCard from "../PropertyCard/propertycard";
-import { getProperties } from "../../services/PropertyServices";
 import styled from "@emotion/styled";
 import Input from "../ui/Input/Input";
 
@@ -32,12 +31,7 @@ const PropertiesListContainer = styled.div`
   place-items: center;
 `;
 
-function PropertiesList() {
-  const [properties, setProperties] = useState([]);
-
-  useEffect(() => {
-    getProperties().then((data) => setProperties(data));
-  }, []);
+function PropertiesList({properties}) {
 
   const getMessage = () => {
     if (properties.length === 0) return "No properties Found";

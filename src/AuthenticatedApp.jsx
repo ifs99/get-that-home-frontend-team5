@@ -7,7 +7,8 @@ import Layout from "./components/Layout/Layout";
 import Header from "./components/Header/header";
 import LogedinFooter from "./components/Footer/logedinfooter";
 import { Routes, Route, Navigate } from "react-router-dom";
-import PropertiesList from "./components/PropertiesList/PropertiesList";
+import Landlord from "./components/Landlord/Landlord";
+import { useAuth } from "./context/AuthContext";
 
 const MainContainer = styled.div`
   flex-grow: 1;
@@ -23,14 +24,17 @@ function Algo() {
 }
 
 function AuthenticatedApp() {
+
+  const { user } = useAuth();
+
   return (
     <Layout>
       <Header />
       <Routes>
         <Route path="/">
           {/* <Route index element={<Navigate to="/" />} /> */}
-          <Route path="/" element={<Algo />} />
-          <Route path="/propertieslist" element={<PropertiesList />} />
+ 
+           {user.user_type == "Landlord" ? <Route path="/" element={<Landlord/>}/> : <Route path="/" element= {<>HomeSeeker</>}/>}
         </Route>
       </Routes>
 
