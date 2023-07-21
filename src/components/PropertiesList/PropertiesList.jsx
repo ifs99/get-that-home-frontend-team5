@@ -6,15 +6,18 @@ import styled from "@emotion/styled";
 import Input from "../ui/Input/Input";
 import { Popover } from "antd";
 import Button from "../ui/button";
-
+import PriceFilter from "../Filters/PriceFilter/PriceFilter";
 
 const PropertiesListMainContianer = styled.div`
   flex-grow: 1;
   margin: auto;
   width: 1200px;
+  padding: 32px 0;
 `;
 const FiltersWrapper = styled.div`
   display: flex;
+  align-items: center;
+  justify-content: space-between;
 `;
 
 const StyledCounter = styled.h6`
@@ -37,9 +40,12 @@ const PropertiesListContainer = styled.div`
 
 const FiltersContainer = styled.div`
   display: flex;
+  gap: 0.5rem;
 `;
 
-function PropertiesList({properties}) {
+function PropertiesList() {
+  const [properties, setProperties] = useState([]);
+
 
   const getMessage = () => {
     if (properties.length === 0) return "No properties Found";
@@ -52,9 +58,11 @@ function PropertiesList({properties}) {
   return (
     <PropertiesListMainContianer>
       <FiltersWrapper>
-        <Input placeholer="Search by address" />
+        <div style={{ width: "150px" }}>
+          <Input placeholer="Search by address" />
+        </div>
         <FiltersContainer>
-          {/* <PriceFilter/> */}
+          <PriceFilter />
           <Popover placement="bottom">
             <Button type="primary">PROPERTY TYPE</Button>
           </Popover>
@@ -65,7 +73,9 @@ function PropertiesList({properties}) {
             <Button type="primary">MORE</Button>
           </Popover>
         </FiltersContainer>
-        <Input placeholer="operation type" />
+        <div style={{ width: "150px" }}>
+          <Input placeholer="operation type" />
+        </div>
       </FiltersWrapper>
       <StyledCounter>{properties_counter}</StyledCounter>
       <PropertiesListContainer>
