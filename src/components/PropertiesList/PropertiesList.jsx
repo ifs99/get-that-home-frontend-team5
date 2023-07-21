@@ -46,9 +46,6 @@ const FiltersContainer = styled.div`
 function PropertiesList() {
   const [properties, setProperties] = useState([]);
 
-  useEffect(() => {
-    getProperties().then((data) => setProperties(data));
-  }, []);
 
   const getMessage = () => {
     if (properties.length === 0) return "No properties Found";
