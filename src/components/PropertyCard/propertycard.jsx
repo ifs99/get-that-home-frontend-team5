@@ -8,7 +8,8 @@ const Container = styled.div`
   width: 18.75rem;
   height: 22.5rem;
   position: relative;
-  border-top-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+  border-top-left-radius: 0.5rem;
   box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.2);
 `;
 
