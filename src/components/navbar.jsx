@@ -8,11 +8,9 @@ import { useState } from "react";
 // import { Modal } from "antd";
 import Input from "./ui/Input/Input";
 import Modal from "./ui/Modal/Modal";
-import {RiUserReceived2Line} from "react-icons/ri";
+import { RiUserReceived2Line } from "react-icons/ri";
 import { useAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
-
-
 
 const Menu = styled.div`
   display: flex;
@@ -24,9 +22,8 @@ const Menu = styled.div`
 
 function NavBar() {
   const [role, setRole] = useState("");
-  const navigate = useNavigate()
-  const {login, logout} = useAuth()
-  
+  const navigate = useNavigate();
+  const { login, logout } = useAuth();
 
   const [isLoginModalOpen, setIsModalLoginOpen] = useState(false);
 
@@ -46,7 +43,6 @@ function NavBar() {
     event.preventDefault();
     setIsModalLoginOpen(false);
     login(formData);
-   
   }
 
   const handleLogin = () => {
@@ -54,12 +50,12 @@ function NavBar() {
   };
 
   const handleLogout = async () => {
-    await logout()
-  }
+    await logout();
+  };
 
   const handleJoin = () => {
-    navigate("/signup")
-  }
+    navigate("/signup");
+  };
   return (
     <>
       <Menu>
@@ -82,7 +78,7 @@ function NavBar() {
               LOGOUT
             </Button>
           </>
-        ) : role === "1" ? (
+        ) : role === "Landlord" ? (
           <>
             <Button type="secondary" size="sm" onClick={handleLogout}>
               <BiLogOutCircle />
@@ -97,7 +93,7 @@ function NavBar() {
               PROFILE
             </Button>
           </>
-        ) : role === "2" ? (
+        ) : role === "HomeSeeker" ? (
           <>
             <Button type="secondary" size="sm" onClick={handleLogout}>
               <BiLogOutCircle />
@@ -121,29 +117,29 @@ function NavBar() {
         onOk={handleSubmit}
         footer={[
           <Button key="submit" type="primary" onClick={handleSubmit}>
-            <RiUserReceived2Line size={24}/>
+            <RiUserReceived2Line size={24} />
             LOGIN
           </Button>,
         ]}
       >
         <form>
-          <Input 
-          id="email"
-          name="email"
-          type="email"
-          placeholder="user@mail.com"
-          value={email}
-          onChange={handleChange}
-          label="Email"
+          <Input
+            id="email"
+            name="email"
+            type="email"
+            placeholder="user@mail.com"
+            value={email}
+            onChange={handleChange}
+            label="Email"
           />
-          <Input 
-           id="password"
-           name="password"
-           type="password"
-           placeholder="******"
-           value={password}
-           onChange={handleChange}
-           label="Password"
+          <Input
+            id="password"
+            name="password"
+            type="password"
+            placeholder="******"
+            value={password}
+            onChange={handleChange}
+            label="Password"
           />
         </form>
       </Modal>
