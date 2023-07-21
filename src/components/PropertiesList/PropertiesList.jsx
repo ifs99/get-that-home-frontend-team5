@@ -1,9 +1,7 @@
-import { useEffect, useState } from "react";
-
 import PropertyCard from "../PropertyCard/propertycard";
-
 import styled from "@emotion/styled";
 import Input from "../ui/Input/Input";
+import { useAuth } from "../../context/AuthContext";
 import { Popover } from "antd";
 import Button from "../ui/button";
 import PriceFilter from "../Filters/PriceFilter/PriceFilter";
@@ -43,9 +41,9 @@ const FiltersContainer = styled.div`
   gap: 0.5rem;
 `;
 
-function PropertiesList() {
-  const [properties, setProperties] = useState([]);
-
+function PropertiesList({ properties }) {
+  const { user } = useAuth();
+  console.log(properties);
 
   const getMessage = () => {
     if (properties.length === 0) return "No properties Found";
@@ -57,6 +55,15 @@ function PropertiesList() {
 
   return (
     <PropertiesListMainContianer>
+      {user.user_type === "Landlord" ? (
+        <></>
+      ) : (
+        <FiltersWrapper>
+          <Input placeholer="Search by address" />
+          <div>some filters</div>
+          <Input placeholer="operation type" />
+        </FiltersWrapper>
+      )}
       <FiltersWrapper>
         <div style={{ width: "150px" }}>
           <Input placeholer="Search by address" />

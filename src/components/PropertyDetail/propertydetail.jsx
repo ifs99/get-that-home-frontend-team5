@@ -4,6 +4,7 @@ import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
 import { BiDollarCircle, BiBed, BiBath, BiArea } from "react-icons/bi";
 import { FaPaw } from "react-icons/fa";
 import { typography, fonts, colors } from "../../styles";
+import { useAuth } from "../../context/AuthContext";
 
 const PropertyDetailContainer = styled.div`
   display: flex;
