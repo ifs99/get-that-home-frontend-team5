@@ -8,6 +8,8 @@ import Header from "./components/Header/header";
 import LogedinFooter from "./components/Footer/logedinfooter";
 import { Routes, Route, Navigate } from "react-router-dom";
 import PropertiesList from "./components/PropertiesList/PropertiesList";
+import { useAuth } from "./context/AuthContext";
+import NewPropertyForm from "./components/NewPropertyForm/NewPropertyForm";
 
 const MainContainer = styled.div`
   flex-grow: 1;
@@ -23,6 +25,7 @@ function Algo() {
 }
 
 function AuthenticatedApp() {
+  const { user } = useAuth();
   return (
     <Layout>
       <Header />
@@ -31,6 +34,7 @@ function AuthenticatedApp() {
           {/* <Route index element={<Navigate to="/" />} /> */}
           <Route path="/" element={<Algo />} />
           <Route path="/propertieslist" element={<PropertiesList />} />
+          <Route path="/newproperty" element={<NewPropertyForm />} />
         </Route>
       </Routes>
 

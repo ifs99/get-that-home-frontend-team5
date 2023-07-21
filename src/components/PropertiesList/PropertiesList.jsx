@@ -4,6 +4,9 @@ import PropertyCard from "../PropertyCard/propertycard";
 import { getProperties } from "../../services/PropertyServices";
 import styled from "@emotion/styled";
 import Input from "../ui/Input/Input";
+import { Popover } from "antd";
+import Button from "../ui/button";
+
 
 const PropertiesListMainContianer = styled.div`
   flex-grow: 1;
@@ -32,12 +35,11 @@ const PropertiesListContainer = styled.div`
   place-items: center;
 `;
 
-function PropertiesList() {
-  const [properties, setProperties] = useState([]);
+const FiltersContainer = styled.div`
+  display: flex;
+`;
 
-  useEffect(() => {
-    getProperties().then((data) => setProperties(data));
-  }, []);
+function PropertiesList({properties}) {
 
   const getMessage = () => {
     if (properties.length === 0) return "No properties Found";
@@ -51,7 +53,18 @@ function PropertiesList() {
     <PropertiesListMainContianer>
       <FiltersWrapper>
         <Input placeholer="Search by address" />
-        <div>some filters</div>
+        <FiltersContainer>
+          {/* <PriceFilter/> */}
+          <Popover placement="bottom">
+            <Button type="primary">PROPERTY TYPE</Button>
+          </Popover>
+          <Popover placement="bottom">
+            <Button type="primary">BEDS & BATHS</Button>
+          </Popover>
+          <Popover placement="bottom">
+            <Button type="primary">MORE</Button>
+          </Popover>
+        </FiltersContainer>
         <Input placeholer="operation type" />
       </FiltersWrapper>
       <StyledCounter>{properties_counter}</StyledCounter>
