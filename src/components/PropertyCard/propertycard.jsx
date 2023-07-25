@@ -3,20 +3,20 @@ import { colors, typography, fonts } from "../../styles";
 import { RiCoinsFill, RiBuildingLine } from "react-icons/ri";
 import { BiDollarCircle, BiBed, BiBath, BiArea } from "react-icons/bi";
 import { FaPaw } from "react-icons/fa";
+import NoImageToDisplay from "../../assets/no-images.jpg";
 
 const Container = styled.div`
   width: 300px;
-  height: 22.5rem;
+  height: 360px;
   position: relative;
   border-top-right-radius: 0.5rem;
   border-top-left-radius: 0.5rem;
   box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.2);
 `;
 
-const ImgContainer = styled.img`
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
+const ImageContainer = styled.div`
+  width: 300px;
+  height: 200px;
 `;
 
 const Content = styled.div`
@@ -112,7 +112,25 @@ const Sub1 = styled.p`
   ${fonts.primary}
 `;
 
-function PropertyCard({ location, name_image }) {
+const PropertyImage = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+`
+
+function PropertyCard({
+  location,
+  name_image,
+  price,
+  property_type,
+  area,
+  bathroom,
+  bedroom
+}) {
+  const image = name_image
+    ? `https://gethomeprueba3.s3.us-west-2.amazonaws.com/${name_image}`
+    : NoImageToDisplay;
+
   return (
     <Container>
       <CardChip>
@@ -120,19 +138,19 @@ function PropertyCard({ location, name_image }) {
         <p>For Rental</p>
       </CardChip>
       <Card>
-        <ImgContainer
-          src={`https://gethomeprueba3.s3.us-west-2.amazonaws.com/${name_image}`}
-        />
+        <ImageContainer>
+          <PropertyImage src={image} alt="property image" />
+        </ImageContainer>
         <Content>
           <RentData>
             <DataProp>
               <InfoContainer>
                 <BiDollarCircle size={32} />
-                <Head5>3000</Head5>
+                <Head5>{price}</Head5>
               </InfoContainer>
               <InfoContainer>
                 <RiBuildingLine size={24} />
-                <Body1>Apartment</Body1>
+                <Body1>{property_type}</Body1>
               </InfoContainer>
             </DataProp>
             <PropInfo>
@@ -140,15 +158,15 @@ function PropertyCard({ location, name_image }) {
               <DataLabel>
                 <IconWrap>
                   <BiBed size={24} />
-                  <p>4</p>
+                  <p>{bedroom}</p>
                 </IconWrap>
                 <IconWrap>
                   <BiBath size={24} />
-                  <p>2</p>
+                  <p>{bathroom}</p>
                 </IconWrap>
                 <IconWrap>
                   <BiArea size={24} />
-                  <p>180 m2</p>
+                  <p>{area} m2</p>
                 </IconWrap>
                 <FaPaw size={24} />
               </DataLabel>

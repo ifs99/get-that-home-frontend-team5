@@ -26,15 +26,11 @@ export default async function ApiFetch(
     body: body ? JSON.stringify(body) : null,
   };
 
-  // const response = await fetch(BASE_URI + endpoint, config);
+  const response = await fetch(BASE_URI + endpoint, config);
 
   let data;
 
   if (!response.ok) {
-    // if (sessionStorage.getItem(tokenKey) && response.status === 401) {
-    //   sessionStorage.removeItem(tokenKey);
-    //   window.location.reload();
-    // }
     try {
       data = await response.json();
     } catch (error) {

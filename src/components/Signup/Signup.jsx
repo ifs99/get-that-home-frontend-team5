@@ -93,12 +93,12 @@ function Signup() {
         <Headline5>Select your profile</Headline5>
         <Headline2>What are you looking for?</Headline2>
         <UserTypeContainer>
-          <StyledUserTypeCard to="landlord">
+          <StyledUserTypeCard to={`/signup/landlord`}>
             <UserTypeImage src={landlord_image} alt="land Lord image" />
             <UserTypeTitle>Landlord</UserTypeTitle>
             <UserTypeDescription>You want to rent or sell a home</UserTypeDescription>
           </StyledUserTypeCard>
-          <StyledUserTypeCard to="homeseeker">
+          <StyledUserTypeCard to={`/signup/homeseeker`}>
             <UserTypeImage src={homeseeker_image} alt="home seeker image" />
             <UserTypeTitle>Home seeker</UserTypeTitle>
             <UserTypeDescription>You want to find a home</UserTypeDescription>
