@@ -7,14 +7,24 @@ import { Radio } from "antd";
 import { typography } from "../../../styles";
 
 const RadioGroupContainer = styled.div`
-  display: flex;
+  display: inline-flex;
+  padding: 0.5rem;
   flex-direction: column;
+  align-items: flex-end;
   gap: 1rem;
 `;
 
 const RadioLabel = styled.p`
   color: var(--gray, #616161);
-  ${typography.text.sm}
+  ${typography.text.sm};
+  letter-spacing: 0.09375rem;
+`;
+
+const ButtonContainer = styled.div`
+  display: flex;
+  padding: 0.25rem 0.5rem;
+  align-items: center;
+  gap: 0.5rem;
 `;
 const options1 = [
   {
@@ -80,27 +90,29 @@ function BedBathFilter() {
     <div>
       <RadioGroupContainer>
         <div>
-          <RadioLabel>BEDROOMS</RadioLabel>
+          <RadioLabel>BEDS</RadioLabel>
           <Radio.Group
             label="Bedrooms"
             options={options3}
             onChange={onChange3}
             value={value3}
             optionType="button"
-            style={{}}
+            buttonStyle="solid"
           />
         </div>
         <div>
-          <RadioLabel>BATHROOMS</RadioLabel>
+          <RadioLabel>BATHS</RadioLabel>
           <Radio.Group
             options={options1}
             onChange={onChange1}
             value={value1}
             optionType="button"
-            style={{}}
+            buttonStyle="solid"
           />
         </div>
-        <Button type="primary"> DONE</Button>
+        <ButtonContainer>
+          <Button type="primary"> DONE</Button>
+        </ButtonContainer>
       </RadioGroupContainer>
     </div>
   );

@@ -1,7 +1,7 @@
-import Popover from "../ui/Popover/Popover";
-import Button from "../ui/button";
+import Popover from "../../ui/Popover/Popover";
+import Button from "../../ui/button";
 import styled from "@emotion/styled";
-import { typography } from "../../styles";
+import { typography } from "../../../styles";
 import React, { useState } from "react";
 import { Checkbox } from "antd";
 
@@ -12,12 +12,29 @@ const defaultCheckedList = [];
 const RadioContainer = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: left;
+  align-items: flex-start;
+  gap: 0.25rem;
 `;
 
 const CheckboxLabel = styled.p`
   color: var(--gray, #616161);
-  ${typography.text.sm}
+  ${typography.text.sm};
+  letter-spacing: 0.09375rem;
+`;
+
+const MainContainer = styled.div`
+  display: inline-flex;
+  padding: 0.5rem;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 1rem;
+`;
+
+const ButtonContainer = styled.div`
+  display: flex;
+  padding: 0.25rem 0.5rem;
+  align-items: center;
+  gap: 0.5rem;
 `;
 function PropertyFilter() {
   const [checkedList, setCheckedList] = useState(defaultCheckedList);
@@ -29,7 +46,7 @@ function PropertyFilter() {
   };
 
   const filterContent = (
-    <div>
+    <MainContainer>
       <RadioContainer>
         <CheckboxLabel>PROPERTY TYPE</CheckboxLabel>
         <CheckboxGroup
@@ -38,8 +55,10 @@ function PropertyFilter() {
           onChange={onChange}
         />
       </RadioContainer>
-      <Button type="primary"> DONE</Button>
-    </div>
+      <ButtonContainer>
+        <Button type="primary"> DONE</Button>
+      </ButtonContainer>
+    </MainContainer>
   );
   return (
     <Popover content={filterContent}>

@@ -3,35 +3,73 @@ import Button from "../../ui/button";
 import { typography } from "../../../styles";
 import styled from "@emotion/styled";
 import { Input } from "antd";
-import { Radio } from "antd";
+import { Checkbox } from "antd";
+import { AiOutlineMinus } from "react-icons/ai";
+import "./override2.scss";
 
 const RadioLabel = styled.p`
   color: var(--gray, #616161);
   ${typography.text.sm}
+  letter-spacing: 0.09375rem;
 `;
 
 const Pets = styled.div`
   display: flex;
+  gap: 1rem;
+`;
+
+const InputBox = styled.div`
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+`;
+const MainContainer = styled.div`
+  display: inline-flex;
+  padding: 0.5rem;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+`;
+
+const ButtonContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.625rem;
+  align-self: stretch;
+`;
+
+const RangeContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.25rem;
 `;
 function MoreFilter() {
   const filterContent = (
-    <div>
+    <MainContainer>
       <div>
         <Pets>
-          <Radio type="radio" value="pets" />
+          <Checkbox options={"Pets Allowed"} />
           <p>Pets Allowed</p>
         </Pets>
       </div>
-      <div>
+      <RangeContainer>
         <RadioLabel>AREA IN M2</RadioLabel>
-        <div>
-          <Input placeholder="min" />
-          -
-          <Input placeholder="max" />
-        </div>
-      </div>
-      <Button type="primary"> DONE</Button>
-    </div>
+        <InputBox>
+          <span className="override2">
+            <Input placeholder="min" />
+          </span>
+          <AiOutlineMinus size={30} />
+          <span className="override2">
+            <Input placeholder="max" />
+          </span>
+        </InputBox>
+      </RangeContainer>
+      <ButtonContainer>
+        <Button type="primary"> DONE</Button>
+      </ButtonContainer>
+    </MainContainer>
   );
 
   return (

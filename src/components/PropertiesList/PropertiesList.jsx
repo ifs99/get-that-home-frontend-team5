@@ -6,7 +6,7 @@ import { useAuth } from "../../context/AuthContext";
 import { Popover } from "antd";
 import Button from "../ui/button";
 import PriceFilter from "../Filters/PriceFilter/PriceFilter";
-import PropertyFilter from "../Filters/PropertyFilter";
+import PropertyFilter from "../Filters/PropertyFilter/PropertyFilter";
 import BedBathFilter from "../Filters/Bed and Bath Filter/BedBathFIilter";
 import MoreFilter from "../Filters/More/Morefilter";
 
@@ -74,9 +74,9 @@ function PropertiesList({ properties }) {
         </div>
         <FiltersContainer>
           <PriceFilter />
-          <PropertyFilter/>
-          <BedBathFilter/>
-          <MoreFilter/>
+          <PropertyFilter />
+          <BedBathFilter />
+          <MoreFilter />
         </FiltersContainer>
         <div style={{ width: "150px" }}>
           <Input placeholer="operation type" />
