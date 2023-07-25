@@ -12,7 +12,6 @@ export async function getPropertiesclosed() {
   return await ApiFetch("/closed")
 }
 
-
 export async function getPropertiefavorite() {
   return await ApiFetch("/favorites")
 }

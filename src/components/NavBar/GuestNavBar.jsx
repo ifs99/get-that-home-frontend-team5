@@ -52,7 +52,7 @@ function GuestNavBar() {
   return (
     <>
       <Menu>
-        <Button>
+        <Button onClick={() => navigate("/propertieslist")}>
           <BiSearch size={24} />
           FIND A HOME
         </Button>

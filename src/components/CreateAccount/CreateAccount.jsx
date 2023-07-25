@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
 import Button from "../ui/button";
+import { useNavigate } from "react-router";
 
 const CreateAccountSection = styled.section`
   background: rgba(244, 143, 177, 0.15);
@@ -27,13 +28,14 @@ const Text = styled.span`
 `;
 
 function CreateAccount() {
+  const navigate = useNavigate()
   return (
     <CreateAccountSection>
       <Container>
         <Text>
           Getting someone to rent your apartment has never been this easy
         </Text>
-        <Button type="primary">CREATE AN ACCOOUNT NOW</Button>
+        <Button type="primary" onClick={() => navigate("/signup")}>CREATE AN ACCOOUNT NOW</Button>
       </Container>
     </CreateAccountSection>
   );

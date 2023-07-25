@@ -38,35 +38,11 @@ const FiltersContainer = styled.div`
 `;
 
 function PropertiesList({ properties }) {
-  const { user } = useAuth();
+
   return (
     <PropertiesListMainContianer>
-      {user.user_type === "Landlord" ? (
-        <></>
-      ) : (
-        // <FiltersWrapper>
-        //   <Input placeholer="Search by address" />
-        //   <div>some filters</div>
-        //   <Input placeholer="operation type" />
-        // </FiltersWrapper>
-        <></>
-      )}
-      {/* <FiltersWrapper>
-        <div style={{ width: "150px" }}>
-          <Input placeholer="Search by address" />
-        </div>
-        <FiltersContainer>
-          <PriceFilter />
-          <PropertyFilter />
-          <BedBathFilter />
-          <MoreFilter />
-        </FiltersContainer>
-        <div style={{ width: "150px" }}>
-          <Input placeholer="operation type" />
-        </div>
-      </FiltersWrapper> */}
       <PropertiesListContainer>
-        {properties.map((property) => (
+        {properties?.map((property) => (
           <PropertyCard key={property.id} {...property} />
         ))}
       </PropertiesListContainer>

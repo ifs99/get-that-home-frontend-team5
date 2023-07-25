@@ -1,18 +1,16 @@
 import styled from "@emotion/styled";
+
 import Container from "../ui/Container/Container";
+import Title from "../ui/Title";
 import Hero from "../Hero/Hero";
 import CreateAccount from "../CreateAccount/CreateAccount";
+import PropertiesList from "../PropertiesList/PropertiesList";
 import MeetTeam from "../MeetTeam/MeetTeam";
-import { fonts, typography } from "../../styles";
-import PropertyCard from "../PropertyCard/propertycard";
 
 const CardContainer = styled.div`
-  display: grid;
-  margin: auto;
-  grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
-  place-items: center;
-  column-gap: 2rem;
-  max-width: 1000px;
+  display: flex;
+  flex-direction: column;
+  padding: 4rem;
 `;
 
 const TextContainer = styled.div`
@@ -23,33 +21,28 @@ const TextContainer = styled.div`
 `;
 
 const Sub2 = styled.p`
-  color: #373737;
-  ${typography.head.xxs};
-  ${fonts.primary};
+  color: var(--dark-gray, #373737);
+  text-align: center;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px;
+  letter-spacing: 0.1px;
 `;
 
-const Head4 = styled.p`
-  color: #bf5f82;
-  ${typography.head.lg};
-  ${fonts.primary}
-`;
-
-function GuestMainContainer() {
+function GuestMainContainer({ properties }) {
+  console.log("guest main: ", properties);
   return (
     <Container type="main">
       <Hero />
       <CreateAccount />
-      <Container type="main">
+      <CardContainer>
         <TextContainer>
           <Sub2>Find and apartment you love</Sub2>
-          <Head4>Homes for rent at best prices</Head4>
+          <Title text="Homes for rent at best prices" />
         </TextContainer>
-        <CardContainer>
-          <PropertyCard />
-          <PropertyCard />
-          <PropertyCard />
-        </CardContainer>
-      </Container>
+        <PropertiesList properties={properties} />
+      </CardContainer>
       <MeetTeam />
     </Container>
   );
