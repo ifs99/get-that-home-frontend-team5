@@ -131,6 +131,7 @@ function PropertyCard({
     ? `https://gethomeprueba3.s3.us-west-2.amazonaws.com/${name_image}`
     : NoImageToDisplay;
 
+    
   return (
     <Container>
       <CardChip>

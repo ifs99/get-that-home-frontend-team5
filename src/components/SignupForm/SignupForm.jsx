@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import Button from "../ui/button";
 import Input from "../ui/Input/Input";
-import { useParams } from "react-router";
+import { useParams } from "react-router-dom";
 import { useState } from "react";
 import { useAuth } from "../../context/AuthContext";
 

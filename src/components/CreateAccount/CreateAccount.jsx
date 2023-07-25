@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import Button from "../ui/button";
-import { useNavigate } from "react-router";
+import { useNavigate } from "react-router-dom";
 
 const CreateAccountSection = styled.section`
   background: rgba(244, 143, 177, 0.15);

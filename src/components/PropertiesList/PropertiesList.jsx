@@ -17,9 +17,6 @@ const PropertiesListMainContianer = styled.div`
   padding: 32px 0;
 `;
 
-
-
-
 const PropertiesListContainer = styled.div`
   display: grid;
   padding: 2rem;
