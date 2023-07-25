@@ -1,10 +1,14 @@
 import PropertyCard from "../PropertyCard/propertycard";
+import { getProperties } from "../../services/propertyServices";
 import styled from "@emotion/styled";
 import Input from "../ui/Input/Input";
 import { useAuth } from "../../context/AuthContext";
 import { Popover } from "antd";
 import Button from "../ui/button";
 import PriceFilter from "../Filters/PriceFilter/PriceFilter";
+import PropertyFilter from "../Filters/PropertyFilter/PropertyFilter";
+import BedBathFilter from "../Filters/Bed and Bath Filter/BedBathFIilter";
+import MoreFilter from "../Filters/More/Morefilter";
 
 const PropertiesListMainContianer = styled.div`
   flex-grow: 1;
@@ -70,15 +74,9 @@ function PropertiesList({ properties }) {
         </div>
         <FiltersContainer>
           <PriceFilter />
-          <Popover placement="bottom">
-            <Button type="primary">PROPERTY TYPE</Button>
-          </Popover>
-          <Popover placement="bottom">
-            <Button type="primary">BEDS & BATHS</Button>
-          </Popover>
-          <Popover placement="bottom">
-            <Button type="primary">MORE</Button>
-          </Popover>
+          <PropertyFilter />
+          <BedBathFilter />
+          <MoreFilter />
         </FiltersContainer>
         <div style={{ width: "150px" }}>
           <Input placeholer="operation type" />

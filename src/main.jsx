@@ -7,7 +7,7 @@ import { Global } from "@emotion/react";
 import { global, reset } from "./styles/global.js";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
+  <div>
     <Global styles={reset} />
     <Global styles={global} />
     <BrowserRouter>
@@ -15,5 +15,5 @@ ReactDOM.createRoot(document.getElementById("root")).render(
         <App />
       </AuthProvider>
     </BrowserRouter>
-  </React.StrictMode>
+  </div>
 );

@@ -18,6 +18,7 @@ import FavoriteContacted from "./components/HomeSeeker/Contactedproperties";
 import FindHome from "./components/HomeSeeker/findhome";
 import PropertiesList from "./components/PropertiesList/PropertiesList";
 import NewPropertyForm from "./components/NewPropertyForm/NewPropertyForm";
+import PropertiesList from "./components/PropertiesList/PropertiesList";
 
 const MainContainer = styled.div`
   flex-grow: 1;
