@@ -26,7 +26,7 @@ export default async function ApiFetch(
     body: body ? JSON.stringify(body) : null,
   };
 
-  const response = await fetch(BASE_URI + endpoint, config);
+  // const response = await fetch(BASE_URI + endpoint, config);
 
   let data;
 
