@@ -25,6 +25,7 @@ const Text = styled.span`
   font-weight: 400;
   line-height: 48px;
   letter-spacing: 0.25px;
+  
 `;
 
 function CreateAccount() {

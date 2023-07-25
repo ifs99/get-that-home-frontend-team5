@@ -16,11 +16,7 @@ const PropertiesListMainContianer = styled.div`
   width: 1200px;
   padding: 32px 0;
 `;
-const FiltersWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-`;
+
 
 
 

@@ -28,8 +28,8 @@ function UnauthenticatedApp() {
         <Route path="/" element={<GuestMainContainer properties={guestPropertiesList.slice(0, 3)} />} />
         <Route path="/propertieslist" element={<PropertiesList properties={guestPropertiesList} />} />
         <Route path="/signup" element={<Signup />} />
-        <Route path="/signup/homeseeker" element={<SignupForm />} />
-        <Route path="/signup/landlord" element={<SignupForm />} />
+        <Route path="/signup/:user_type" element={<SignupForm />} />
+        {/* <Route path="/signup/landlord" element={<SignupForm />} /> */}
         <Route path="*" element={<PageNotFound />} />
       </Routes>
       <LogedinFooter />

@@ -41,13 +41,11 @@ function AuthenticatedApp() {
       .catch((error) => console.log(error));
   }, []);
 
-  console.log("authenticated app:", user);
-
   return (
     <Layout>
       <Header />
       <Routes>
-        {user.user_type == "Landlord" ? (
+        {user.type_user == "landlord" ? (
           <>
             <Route index element={<Navigate to="/active" />} />
             <Route path="/active" element={<LandlordActivedProperties />} />
@@ -56,7 +54,6 @@ function AuthenticatedApp() {
           </>
         ) : (
           <>
-            <Route index element={<Navigate to="/" />} />
             <Route
               path="/properties"
               element={<FindHome properties={properties} />}
@@ -66,7 +63,6 @@ function AuthenticatedApp() {
           </>
         )}
       </Routes>
-
       <LogedinFooter></LogedinFooter>
     </Layout>
   );
