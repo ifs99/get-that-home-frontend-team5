@@ -158,23 +158,27 @@ const Body1C = styled.p`
 `;
 
 const CarouselContainer = styled.div`
-  width: 380px;
-  height: 380px;
+  display: flex;
   backgroundcolor: orange;
+  align-items: center;
 `;
 
-const ButtonContainer = styled.div`
-  display: flex;
-  justify-content: center;
-`;
 function PropertyDetail() {
   const ref = useRef();
   return (
     <PropertyDetailContainer>
       <PropertyInfo>
         <CarouselContainer>
+          <Button
+            onClick={() => {
+              ref.current.prev();
+            }}
+          >
+            <BsChevronLeft />
+          </Button>
+
           <Carousel
-            style={{ display: "flex" }}
+            style={{ width: "32rem", height:"24rem" }}
             autoplay
             dots={true}
             dotPosition="top"
@@ -185,9 +189,9 @@ function PropertyDetail() {
               <h1
                 style={{
                   color: "pink",
-                  lineHeight: "300px",
+                  lineHeight: "24rem",
                   backgroundColor: "pink",
-                }}
+                }}                                    //Cambiar h1 por componente img
               >
                 Slide1
               </h1>
@@ -196,7 +200,7 @@ function PropertyDetail() {
               <h1
                 style={{
                   color: "yellow",
-                  lineHeight: "300px",
+                  lineHeight: "24rem",
                   backgroundColor: "yellow",
                 }}
               >
@@ -207,7 +211,7 @@ function PropertyDetail() {
               <h1
                 style={{
                   color: "green",
-                  lineHeight: "300px",
+                  lineHeight: "24rem",
                   backgroundColor: "green",
                 }}
               >
@@ -218,7 +222,7 @@ function PropertyDetail() {
               <h1
                 style={{
                   color: "blue",
-                  lineHeight: "300px",
+                  lineHeight: "24rem",
                   backgroundColor: "blue",
                 }}
               >
@@ -229,7 +233,7 @@ function PropertyDetail() {
               <h1
                 style={{
                   color: "red",
-                  lineHeight: "300px",
+                  lineHeight: "24rem",
                   backgroundColor: "red",
                 }}
               >
@@ -237,22 +241,14 @@ function PropertyDetail() {
               </h1>
             </div>
           </Carousel>
-          <ButtonContainer>
-            <Button
-              onClick={() => {
-                ref.current.prev();
-              }}
-            >
-              <BsChevronLeft />
-            </Button>
-            <Button
-              onClick={() => {
-                ref.current.next();
-              }}
-            >
-              <BsChevronRight />
-            </Button>
-          </ButtonContainer>
+
+          <Button
+            onClick={() => {
+              ref.current.next();
+            }}
+          >
+            <BsChevronRight />
+          </Button>
         </CarouselContainer>
         <PD>
           <PDTitle>
