@@ -11,11 +11,25 @@ import Landlordclosedproperties from "./components/Landlord/Landlordclosedproper
 import { useAuth } from "./context/AuthContext";
 import { getProperties } from "./services/propertyServices";
 import { useState, useEffect } from "react";
-import FavoriteProperties from "./components/HomeSeeker/favoriteproperties";
+import FavoriteProperties from "./components/HomeSeeker/Favoriteproperties";
 import FavoriteContacted from "./components/HomeSeeker/Contactedproperties";
 import FindHome from "./components/HomeSeeker/findhome";
 import NewPropertyForm from "./components/NewPropertyForm/NewPropertyForm";
 import LandlordActivedProperties from "./components/Landlord/LandlordActivedProperties";
+import PropertiesList from "./components/PropertiesList/PropertiesList";
+
+const MainContainer = styled.div`
+  flex-grow: 1;
+`;
+
+function Algo() {
+  return (
+    <MainContainer>
+      <Hero />
+      <MeetTeam />
+    </MainContainer>
+  );
+}
 
 function AuthenticatedApp() {
   const { user } = useAuth();
