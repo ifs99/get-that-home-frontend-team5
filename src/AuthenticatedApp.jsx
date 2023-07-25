@@ -9,15 +9,13 @@ import LogedinFooter from "./components/Footer/logedinfooter";
 import { Routes, Route, Navigate } from "react-router-dom";
 import Landlordclosedproperties from "./components/Landlord/Landlordclosedproperties";
 import { useAuth } from "./context/AuthContext";
-import Landlord from "./components/Landlord/Landlord";
 import { getProperties } from "./services/propertyServices";
 import { useState, useEffect } from "react";
 import FavoriteProperties from "./components/HomeSeeker/Favoriteproperties";
 import FavoriteContacted from "./components/HomeSeeker/Contactedproperties";
-
 import FindHome from "./components/HomeSeeker/findhome";
-import PropertiesList from "./components/PropertiesList/PropertiesList";
 import NewPropertyForm from "./components/NewPropertyForm/NewPropertyForm";
+import LandlordActivedProperties from "./components/Landlord/LandlordActivedProperties";
 import PropertiesList from "./components/PropertiesList/PropertiesList";
 
 const MainContainer = styled.div`
@@ -35,13 +33,15 @@ function Algo() {
 
 function AuthenticatedApp() {
   const { user } = useAuth();
+  const [properties, setProperties] = useState([]);
 
-  const [properties, setProperties] = useState ([]);
-
-  useEffect (() => {
-    
-  getProperties().then((data) => setProperties(data));
+  useEffect(() => {
+    getProperties()
+      .then((data) => setProperties(data))
+      .catch((error) => console.log(error));
   }, []);
+
+  console.log("authenticated app:", user);
 
   return (
     <Layout>
@@ -50,20 +50,21 @@ function AuthenticatedApp() {
         {user.user_type == "Landlord" ? (
           <>
             <Route index element={<Navigate to="/active" />} />
-            <Route path="/active" element={<Landlord />} />
+            <Route path="/active" element={<LandlordActivedProperties />} />
             <Route path="/closed" element={<Landlordclosedproperties />} />
             <Route path="/newproperty" element={<NewPropertyForm />} />
           </>
         ) : (
           <>
-          <Route index element={<Navigate to="/"/>} />
-          <Route path="/properties" element={<FindHome properties ={properties}/>} />
-          <Route path="/favorites" element={<FavoriteProperties/>} />
-          <Route path="/contacted" element={<FavoriteContacted/>} />
+            <Route index element={<Navigate to="/" />} />
+            <Route
+              path="/properties"
+              element={<FindHome properties={properties} />}
+            />
+            <Route path="/favorites" element={<FavoriteProperties />} />
+            <Route path="/contacted" element={<FavoriteContacted />} />
           </>
-          
         )}
-       
       </Routes>
 
       <LogedinFooter></LogedinFooter>

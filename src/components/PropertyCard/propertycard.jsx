@@ -14,13 +14,9 @@ const Container = styled.div`
 `;
 
 const ImgContainer = styled.img`
-  display: flex;
-  width: 18.75rem;
-  height: 12.5rem;
-  justify-content: center;
-  align-items: center;
-  border-top-right-radius: 0.5rem;
-  border-top-left-radius: 0.5rem;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 `;
 
 const Content = styled.div`
@@ -116,7 +112,7 @@ const Sub1 = styled.p`
   ${fonts.primary}
 `;
 
-function PropertyCard({location}) {
+function PropertyCard({ location, name_image }) {
   return (
     <Container>
       <CardChip>
@@ -124,7 +120,9 @@ function PropertyCard({location}) {
         <p>For Rental</p>
       </CardChip>
       <Card>
-        <ImgContainer src="src/assets/PropertyPlaceholder.png" />
+        <ImgContainer
+          src={`https://gethomeprueba3.s3.us-west-2.amazonaws.com/${name_image}`}
+        />
         <Content>
           <RentData>
             <DataProp>

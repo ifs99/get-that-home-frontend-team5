@@ -259,7 +259,10 @@ function NewPropertyForm() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     console.log(propertyForm);
+
     for (const imageFile of propertyForm.images) {
+      console.log(imageFile)
+      console.log(imageFile.details.name)
       const uploadParams = {
         Bucket: 'gethomeprueba3',
         Key: imageFile.details.name,
@@ -268,6 +271,9 @@ function NewPropertyForm() {
       const command = new PutObjectCommand(uploadParams);
       await client.send(command);
     }
+
+    console.log("ambas imagenes se subieron=======")
+
     const propertydata = {
     
         operation_type: propertyForm.operation_type,
@@ -285,7 +291,7 @@ function NewPropertyForm() {
     }
 
     console.log(propertydata)
-    await createProperty(propertydata)
+    //await createProperty(propertydata)
   };
 
   

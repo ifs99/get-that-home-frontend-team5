@@ -4,7 +4,6 @@ import { AiOutlineUserAdd, AiFillHeart } from "react-icons/ai";
 import { BiLogOutCircle } from "react-icons/bi";
 import { RiHome8Line } from "react-icons/ri";
 
-
 import Button from "../ui/button";
 import { useAuth } from "../../context/AuthContext";
 import { useNavigate } from "react-router-dom";
@@ -21,36 +20,31 @@ function UserNavBar() {
   const { user } = useAuth();
   const { logout } = useAuth();
 
-  const navegate = useNavigate()
-  
+  const navigate = useNavigate();
+
   const handleLogout = async () => {
     await logout();
   };
 
-  function handleProperties(){
-
-    navegate("/properties")
-
+  function handleProperties() {
+    navigate("/properties");
   }
 
-  function handlesavedproperties(){
-    navegate("/favorites")
+  function handlesavedproperties() {
+    navigate("/favorites");
   }
 
   return (
     <>
       <Menu>
-
-      {user.user_type === "Landlord" ? (
+        {user.user_type === "Landlord" ? (
           <></>
-          ) : (
-
-            <Button onClick={handleProperties}>
+        ) : (
+          <Button onClick={handleProperties}>
             <BiSearch size={24} />
             FIND A HOME
           </Button>
-            
-          )}   
+        )}
         <>
           <Button type="secondary" onClick={handleLogout}>
             <BiLogOutCircle size={24} />
@@ -58,17 +52,15 @@ function UserNavBar() {
           </Button>
 
           {user.user_type === "Landlord" ? (
-            <Button type="primary">
+            <Button type="primary" onClick={() => navigate("/active")}>
               <RiHome8Line size={24} />
               MY PROPERTIES
             </Button>
           ) : (
-                <Button type="primary" onClick={handlesavedproperties}>
-                  <AiFillHeart size={24} />
-                  SAVED PROPERTIES
-                </Button>
-            
-            
+            <Button type="primary" onClick={handlesavedproperties}>
+              <AiFillHeart size={24} />
+              SAVED PROPERTIES
+            </Button>
           )}
 
           <Button type="primary">
