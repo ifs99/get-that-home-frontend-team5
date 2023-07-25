@@ -5,6 +5,8 @@ import { BiDollarCircle, BiBed, BiBath, BiArea } from "react-icons/bi";
 import { FaPaw } from "react-icons/fa";
 import { typography, fonts, colors } from "../../styles";
 import { useAuth } from "../../context/AuthContext";
+import { Carousel } from "antd";
+import { useRef } from "react";
 
 const PropertyDetailContainer = styled.div`
   display: flex;
@@ -154,19 +156,100 @@ const Body1C = styled.p`
   color:#373737;
   text-align: center;
 `;
+
+const CarouselContainer = styled.div`
+  display: flex;
+  backgroundcolor: orange;
+  align-items: center;
+`;
+
 function PropertyDetail() {
+  const ref = useRef();
   return (
     <PropertyDetailContainer>
       <PropertyInfo>
-        <PropertyImageContainer>
-          <Button type="" size="sm">
+        <CarouselContainer>
+          <Button
+            onClick={() => {
+              ref.current.prev();
+            }}
+          >
             <BsChevronLeft />
           </Button>
-          <img src="src/assets/PropertyPlaceholder.png" />
-          <Button type="" size="sm">
+
+          <Carousel
+            style={{ width: "32rem", height:"24rem" }}
+            autoplay
+            dots={true}
+            dotPosition="top"
+            draggable
+            ref={ref}
+          >
+            <div>
+              <h1
+                style={{
+                  color: "pink",
+                  lineHeight: "24rem",
+                  backgroundColor: "pink",
+                }}                                    //Cambiar h1 por componente img
+              >
+                Slide1
+              </h1>
+            </div>
+            <div>
+              <h1
+                style={{
+                  color: "yellow",
+                  lineHeight: "24rem",
+                  backgroundColor: "yellow",
+                }}
+              >
+                Slide2
+              </h1>
+            </div>
+            <div>
+              <h1
+                style={{
+                  color: "green",
+                  lineHeight: "24rem",
+                  backgroundColor: "green",
+                }}
+              >
+                Slide3
+              </h1>
+            </div>
+            <div>
+              <h1
+                style={{
+                  color: "blue",
+                  lineHeight: "24rem",
+                  backgroundColor: "blue",
+                }}
+              >
+                Slide4
+              </h1>
+            </div>
+            <div>
+              <h1
+                style={{
+                  color: "red",
+                  lineHeight: "24rem",
+                  backgroundColor: "red",
+                }}
+              >
+                Slide5
+              </h1>
+            </div>
+          </Carousel>
+
+          <Button
+            onClick={() => {
+              ref.current.next();
+            }}
+          >
             <BsChevronRight />
           </Button>
-        </PropertyImageContainer>
+        </CarouselContainer>
         <PD>
           <PDTitle>
             <PDAddress>

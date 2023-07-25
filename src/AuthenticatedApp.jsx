@@ -12,7 +12,7 @@ import { useAuth } from "./context/AuthContext";
 import Landlord from "./components/Landlord/Landlord";
 import { getProperties } from "./services/propertyServices";
 import { useState, useEffect } from "react";
-import FavoriteProperties from "./components/HomeSeeker/favoriteproperties";
+import FavoriteProperties from "./components/HomeSeeker/Favoriteproperties";
 import FavoriteContacted from "./components/HomeSeeker/Contactedproperties";
 
 import FindHome from "./components/HomeSeeker/findhome";
