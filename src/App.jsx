@@ -1,7 +1,7 @@
 import UnauthenticatedApp from "./UnauthenticatedApp";
 import AuthenticatedApp from "./AuthenticatedApp";
 import { useAuth } from "./context/AuthContext";
-import { Button, ConfigProvider } from "antd";
+import { ConfigProvider } from "antd";
 
 function App() {
   const { user } = useAuth();

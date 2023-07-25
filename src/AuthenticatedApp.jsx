@@ -45,7 +45,7 @@ function AuthenticatedApp() {
     <Layout>
       <Header />
       <Routes>
-        {user.type_user == "landlord" ? (
+        {user?.type_user.toLowerCase() == "landlord" ? (
           <>
             <Route index element={<Navigate to="/active" />} />
             <Route path="/active" element={<LandlordActivedProperties />} />
