@@ -134,6 +134,7 @@ const InformationContainer = styled.div`
 const CarouselImageContainer = styled.div`
   display: flex !important;
   justify-content: center;
+  height: 380px !important;
 `;
 
 function LeftPropertyDetail({
@@ -183,13 +184,15 @@ function LeftPropertyDetail({
             draggable
             ref={ref}
           >
+           
             {images.map((image, index) => {
               return (
                 <CarouselImageContainer key={index} className="Hola">
-                  <img src={image} alt="image" />
+                  <img style={{objectFit:"content"}}src={image} alt="image" />
                 </CarouselImageContainer>
               );
             })}
+            <></>
           </Carousel>
           <Button
             onClick={() => {

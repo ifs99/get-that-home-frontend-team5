@@ -4,6 +4,8 @@ import { typography } from "../../../styles";
 import { useAuth } from "../../../context/AuthContext";
 import { BiEdit } from "react-icons/bi";
 import { AiOutlineUserAdd } from "react-icons/ai";
+import { createFavorite } from "../../../services/propertyServices";
+import { useParams, useNavigate } from "react-router-dom";
 
 const PropertyCardInteractionBox = styled.div`
   max-width: 290px;
@@ -37,8 +39,23 @@ const Body1C = styled.p`
   text-align: center;
 `;
 
-function RightPropertyDetail() {
+function RightPropertyDetail({isFavorite}) {
   const { user } = useAuth();
+
+  const {id} = useParams();
+  const navigate = useNavigate();
+ 
+   async function handlefavorites() {
+     try {
+       await createFavorite(id);
+       navigate("/favorites");
+     } catch (error) {
+       console.error("Error creating favorite:", error);
+     }
+   }
+   console.log("holaaa")
+   console.log(isFavorite)
+ 
   return (
     <PropertyCardInteractionBox>
       <PropertyContact>
@@ -49,7 +66,11 @@ function RightPropertyDetail() {
               EDIT PROPERTY
             </Button>
           ) : (
-            <>HomeSEKER</>
+
+            <div>
+              {isFavorite ? "is favorite" : <button onClick={handlefavorites} >Add favorites</button> }
+            </div>
+            
           )
         ) : (
           <ContactContainer>
