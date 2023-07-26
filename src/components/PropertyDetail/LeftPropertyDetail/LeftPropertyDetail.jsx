@@ -130,6 +130,11 @@ const InformationContainer = styled.div`
   gap: 1rem;
 `;
 
+const CarouselImageContainer = styled.div `
+  display: flex !important;
+  justify-content: center;
+`
+
 function LeftPropertyDetail({
   area,
   location,
@@ -142,39 +147,48 @@ function LeftPropertyDetail({
   name_image,
 }) {
   const ref = useRef();
-  const images = name_image?.map((img) => `https://gethomeprueba3.s3.us-west-2.amazonaws.com/${img}`)
-  
+  const images = name_image?.map(
+    (img) => `https://gethomeprueba3.s3.us-west-2.amazonaws.com/${img}`
+  );
+
   return (
     <div>
-      {images && <CarouselContainer>
-        <Button
-          onClick={() => {
-            ref.current.prev();
-          }}
-        >
-          <BsChevronLeft />
-        </Button>
-        <Carousel
-          style={{ width: "32rem", height: "24rem" }}
-          dots={true}
-          dotPosition="top"
-          draggable
-          ref={ref}
-        >
-          {images.map((image, index) => {
-            return (<div key={index}>
-              <img src={image} alt="image"/>
-            </div>)
-          })}
-        </Carousel>
-        <Button
-          onClick={() => {
-            ref.current.next();
-          }}
-        >
-          <BsChevronRight />
-        </Button>
-      </CarouselContainer>}
+      {images && (
+        <CarouselContainer>
+          <Button
+            onClick={() => {
+              ref.current.prev();
+            }}
+          >
+            <BsChevronLeft />
+          </Button>
+          <Carousel
+            style={{ width: "32rem", height: "24rem" }}
+            dots={true}
+            dotPosition="top"
+            draggable
+            ref={ref}
+          >
+            {images.map((image, index) => {
+              return (
+                <CarouselImageContainer
+                  key={index}
+                  className="Hola"
+                >
+                  <img src={image} alt="image" />
+                </CarouselImageContainer>
+              );
+            })}
+          </Carousel>
+          <Button
+            onClick={() => {
+              ref.current.next();
+            }}
+          >
+            <BsChevronRight />
+          </Button>
+        </CarouselContainer>
+      )}
       <InformationContainer>
         <PDTitle>
           <PDAddress>
@@ -219,9 +233,7 @@ function LeftPropertyDetail({
           <Headline6 style={{ color: `#BF5F82` }}>
             About this property
           </Headline6>
-          <Body1>
-            {description}
-          </Body1>
+          <Body1>{description}</Body1>
         </PDAbout>
         <PDMap>
           <Headline6 style={{ color: `#BF5F82` }}>Location</Headline6>

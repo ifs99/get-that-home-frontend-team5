@@ -135,7 +135,7 @@ function PropertyCard({
   const navigate = useNavigate()
 
   const image = name_image
-    ? `https://gethomeprueba3.s3.us-west-2.amazonaws.com/${name_image}`
+    ? `https://gethomeprueba3.s3.us-west-2.amazonaws.com/${name_image[0]}`
     : NoImageToDisplay;
 
   return (
