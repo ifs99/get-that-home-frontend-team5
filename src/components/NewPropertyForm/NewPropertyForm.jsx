@@ -7,8 +7,8 @@ import TextArea from "antd/es/input/TextArea";
 import Button from "../ui/button";
 import "./newpropertyform.css";
 import { S3Client, PutObjectCommand } from "@aws-sdk/client-s3";
-
-import manu from '../../assets/blobManual.png'
+import { BiSolidDollarCircle } from "react-icons/bi";
+import manu from "../../assets/blobManual.png";
 import { createProperty } from "../../services/propertyServices";
 
 // const bucketName = process.env.AWS_BUCKET_NAME
@@ -41,8 +41,6 @@ async function uploadFile(pathFile) {
   const response = await client.send(command);
   return response;
 }
-
-
 
 const NewPropertyFormContainer = styled.div`
   flex-grow: 1;
@@ -151,6 +149,28 @@ const PhotosDescription = styled.div`
   letter-spacing: 1.5px;
   text-transform: uppercase;
 `;
+const Logo = styled.div`
+  position: absolute;
+  top: 38%;
+  transform: translate(0, -45%);
+  z-index: 1;
+  color: gray;
+  pointer-events: none;
+  left: 14.5rem;
+`;
+
+const Logo2 = styled.div`
+  position: absolute;
+  top: 30.65%;
+  transform: translate(0, -45%);
+  z-index: 1;
+  color: gray;
+  pointer-events: none;
+  left: 14.5rem;
+`;
+const InputLogo = styled.div`
+  positon: relative;
+`;
 
 function NewPropertyForm() {
   const [propertyForm, setPropertyForm] = useState({
@@ -258,12 +278,12 @@ function NewPropertyForm() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     console.log("property form: ", propertyForm);
-    let propertyImages = []
+    let propertyImages = [];
 
     for (const imageFile of propertyForm.images) {
-      propertyImages.push(imageFile.details.name)
+      propertyImages.push(imageFile.details.name);
       const uploadParams = {
-        Bucket: 'gethomeprueba3',
+        Bucket: "gethomeprueba3",
         Key: imageFile.details.name,
         Body: imageFile.details,
       };
@@ -271,28 +291,26 @@ function NewPropertyForm() {
       await client.send(command);
     }
 
-    console.log("ambas imagenes se subieron=======")
+    console.log("ambas imagenes se subieron=======");
 
     const propertydata = {
-        operation_type: propertyForm.operation_type,
-        location: propertyForm.location,
-        price: propertyForm.monthly_rent,
-        property_type: propertyForm.property_type,
-        maintanance: propertyForm.maintanance,
-        bathroom: propertyForm.bathrooms,
-        petfriendly: propertyForm.pets_allowed,
-        bedroom: propertyForm.bedrooms,
-        area: propertyForm.area,
-        description: propertyForm.about_property,
-        name_image: propertyImages
-
-    }
-    console.log("sent to form: ", propertydata)
-    console.log("Inicia la craecion")
-    await createProperty(propertydata)
+      operation_type: propertyForm.operation_type,
+      location: propertyForm.location,
+      price: propertyForm.monthly_rent,
+      property_type: propertyForm.property_type,
+      maintanance: propertyForm.maintanance,
+      bathroom: propertyForm.bathrooms,
+      petfriendly: propertyForm.pets_allowed,
+      bedroom: propertyForm.bedrooms,
+      area: propertyForm.area,
+      description: propertyForm.about_property,
+      name_image: propertyImages,
+    };
+    console.log("sent to form: ", propertydata);
+    console.log("Inicia la craecion");
+    await createProperty(propertydata);
   };
 
-  
   return (
     <NewPropertyFormContainer>
       <NewPropertyWrapper>
@@ -314,20 +332,36 @@ function NewPropertyForm() {
             label="ADDRESS"
             placeholder="start typing to autocomplete"
           />
-          <Input
-            label="MONTLY RENT"
-            type="number"
-            value={monthly_rent}
-            onChange={handleMontlyRent}
-            placeholder="2000"
-          />
-          <Input
-            label="Maintanance"
-            type="number"
-            value={maintanance}
-            onChange={handleMaintanance}
-            placeholder="100"
-          />
+          <InputLogo>
+            <Logo>
+              <BiSolidDollarCircle />
+            </Logo>
+            <span>
+              <Input
+                style={{ paddingInlineStart: "1.7rem" }}
+                label="MONTLY RENT"
+                type="number"
+                value={monthly_rent}
+                onChange={handleMontlyRent}
+                placeholder="2000"
+              />
+            </span>
+          </InputLogo>
+          <InputLogo>
+            <Logo2>
+              <BiSolidDollarCircle />
+            </Logo2>
+            <span>
+              <Input
+                style={{ paddingInlineStart: "1.7rem" }}
+                label="Maintanance"
+                type="number"
+                value={maintanance}
+                onChange={handleMaintanance}
+                placeholder="100"
+              />
+            </span>
+          </InputLogo>
           <OperationTypeWrapper>
             <span>Property type</span>
             <Radio.Group

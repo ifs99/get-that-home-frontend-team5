@@ -47,7 +47,7 @@ const Logo = styled.div`
   pointer-events: none;
   left: 1.7rem;
 `;
-
+const InputLogo = styled.div``;
 const LogoRight = styled.div`
   position: absolute;
   top: 38%;
@@ -58,7 +58,6 @@ const LogoRight = styled.div`
   left: 11rem;
 `;
 
-const InputLogo = styled.div``;
 function PriceFilter() {
   const filterContent = (
     <MainContainer>
