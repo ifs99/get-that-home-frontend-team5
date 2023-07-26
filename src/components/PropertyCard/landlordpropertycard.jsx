@@ -13,6 +13,7 @@ import { FaPaw } from "react-icons/fa";
 import NoImageToDisplay from "../../assets/no-images.jpg";
 import { useNavigate } from "react-router-dom";
 import Button from "../ui/button";
+import { closeProperty } from "../../services/propertyServices";
 
 const Container = styled.div`
   width: 300px;
@@ -156,14 +157,20 @@ function LandlordPropertyCard({
     // You can update component properties or state here
   };
 
-  const handleClose = () => {
-    // Your logic for handling the close button click
-    console.log("Close button clicked");
-    // You can change the status from active to closed here
-  };
+ 
   const image = name_image
     ? `https://gethomeprueba3.s3.us-west-2.amazonaws.com/${name_image[0]}`
     : NoImageToDisplay;
+
+    async function handleClose() {
+      try {
+        console.log("hhhhh")
+        await closeProperty(id);
+        navigate("/");
+      } catch (error) {
+        console.error("Error creating favorite:", error);
+      }
+    }
 
   return (
     <Container>

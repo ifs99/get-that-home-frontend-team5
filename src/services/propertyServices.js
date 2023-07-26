@@ -33,3 +33,32 @@ export async function getProperty(id) {
     return { error: 'Failed to get property' };
   }
 }
+
+export async function createFavorite(id) {
+  return await ApiFetch(`/favorites/${id}`, {
+      body: {
+          "favorite":true
+      },
+    }
+  
+  );
+}
+
+export async function checkFavorite(id) {
+  return await ApiFetch(`/interaction/${id}`);
+}
+
+export async function closeProperty(id) {
+  return await ApiFetch(`/actived/${id}`, {
+    body: {
+      "actived": false,
+      "closed": true
+    },
+    method: "PATCH" 
+  });
+}
+
+
+
+
+
