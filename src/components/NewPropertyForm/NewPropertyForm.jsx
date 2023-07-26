@@ -167,6 +167,8 @@ function NewPropertyForm() {
     images: [],
   });
 
+  const [propertyImages, setPropertyImages] = useState([])
+
   const {
     operation_type,
     location,
@@ -261,8 +263,7 @@ function NewPropertyForm() {
     console.log(propertyForm);
 
     for (const imageFile of propertyForm.images) {
-      console.log(imageFile)
-      console.log(imageFile.details.name)
+      setPropertyImages([...propertyImages, imageFile.details.name])
       const uploadParams = {
         Bucket: 'gethomeprueba3',
         Key: imageFile.details.name,
@@ -286,12 +287,13 @@ function NewPropertyForm() {
         bedroom: propertyForm.bedrooms,
         area: propertyForm.area,
         description: propertyForm.about_property,
-        name_image: propertyForm.images[0].details.name
+        name_image: propertyImages
 
     }
 
     console.log(propertydata)
-    //await createProperty(propertydata)
+    console.log("New Property: ",propertyImages)
+    await createProperty(propertydata)
   };
 
   

@@ -10,6 +10,7 @@ import PageNotFound from "./components/PageNotFound/PageNotFound";
 import { getProperties } from "./services/propertyServices";
 import { useEffect, useState } from "react";
 import PropertiesList from "./components/PropertiesList/PropertiesList";
+import PropertyDetail from "./components/PropertyDetail/propertydetail";
 
 function UnauthenticatedApp() {
   const [guestPropertiesList, setGuestPropertiesList] = useState([]);
@@ -29,7 +30,7 @@ function UnauthenticatedApp() {
         <Route path="/propertieslist" element={<PropertiesList properties={guestPropertiesList} />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/signup/:user_type" element={<SignupForm />} />
-        {/* <Route path="/signup/landlord" element={<SignupForm />} /> */}
+        <Route path="/property/:id" element={<PropertyDetail/>}/>
         <Route path="*" element={<PageNotFound />} />
       </Routes>
       <LogedinFooter />

@@ -17,6 +17,7 @@ import FindHome from "./components/HomeSeeker/findhome";
 import NewPropertyForm from "./components/NewPropertyForm/NewPropertyForm";
 import LandlordActivedProperties from "./components/Landlord/LandlordActivedProperties";
 import PropertiesList from "./components/PropertiesList/PropertiesList";
+import PropertyDetail from "./components/PropertyDetail/propertydetail";
 
 const MainContainer = styled.div`
   flex-grow: 1;
@@ -41,6 +42,7 @@ function AuthenticatedApp() {
       .catch((error) => console.log(error));
   }, []);
 
+  console.log("Authenticated: ", user)
   return (
     <Layout>
       <Header />
@@ -51,6 +53,7 @@ function AuthenticatedApp() {
             <Route path="/active" element={<LandlordActivedProperties />} />
             <Route path="/closed" element={<Landlordclosedproperties />} />
             <Route path="/newproperty" element={<NewPropertyForm />} />
+            <Route path="/property/:id" element={<PropertyDetail/>}/>
           </>
         ) : (
           <>

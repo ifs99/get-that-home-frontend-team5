@@ -53,7 +53,7 @@ function LandlordHeader({ number_of_properties }) {
         <NavWord
           to={"/active"}
           style={({ isActive }) => ({
-            color: isActive ? colors.stone[600] : colors.stone[400],
+            color: isActive ? "#F48FB1" : colors.stone[400],
           })}
         >
           ACTIVE
@@ -61,7 +61,7 @@ function LandlordHeader({ number_of_properties }) {
         <NavWord
           to={"/closed"}
           style={({ isActive }) => ({
-            color: isActive ? colors.stone[600] : colors.stone[400],
+            color: isActive ? "#F48FB1" : colors.stone[400],
           })}
         >
           CLOSED
