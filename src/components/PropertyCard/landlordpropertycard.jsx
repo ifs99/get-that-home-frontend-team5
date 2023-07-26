@@ -150,7 +150,17 @@ function LandlordPropertyCard({
   id,
 }) {
   const navigate = useNavigate();
+  const handleEdit = () => {
+    // Your logic for handling the edit button click
+    console.log("Edit button clicked");
+    // You can update component properties or state here
+  };
 
+  const handleClose = () => {
+    // Your logic for handling the close button click
+    console.log("Close button clicked");
+    // You can change the status from active to closed here
+  };
   const image = name_image
     ? `https://gethomeprueba3.s3.us-west-2.amazonaws.com/${name_image[0]}`
     : NoImageToDisplay;
@@ -200,11 +210,17 @@ function LandlordPropertyCard({
       </Card>
       <ColorBack>
         <ButtonContainer>
-          <Button style={{ color: "white", textTransform: "uppercase" }}>
+          <Button
+            style={{ color: "white", textTransform: "uppercase" }}
+            onClick={handleEdit}
+          >
             <BiSolidEdit />
             edit
           </Button>
-          <Button style={{ color: "white", textTransform: "uppercase" }}>
+          <Button
+            style={{ color: "white", textTransform: "uppercase" }}
+            onClick={handleClose}
+          >
             <AiOutlineCloseCircle />
             close
           </Button>
