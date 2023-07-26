@@ -37,7 +37,7 @@ function UserNavBar() {
   return (
     <>
       <Menu>
-        {user.user_type === "Landlord" ? (
+        {user?.type_user.toLowerCase() === "landlord" ? (
           <></>
         ) : (
           <Button onClick={handleProperties}>
@@ -51,7 +51,7 @@ function UserNavBar() {
             LOGOUT
           </Button>
 
-          {user.user_type === "Landlord" ? (
+          {user?.type_user.toLowerCase() === "landlord" ? (
             <Button type="primary" onClick={() => navigate("/active")}>
               <RiHome8Line size={24} />
               MY PROPERTIES

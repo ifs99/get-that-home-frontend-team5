@@ -36,6 +36,7 @@ function GuestNavBar() {
   }
 
   function handleSubmit(event) {
+    navigate("/")
     event.preventDefault();
     setIsModalLoginOpen(false);
     login(formData);
@@ -71,6 +72,7 @@ function GuestNavBar() {
         title="Login"
         open={isLoginModalOpen}
         onOk={handleSubmit}
+        onCancel={() => setIsModalLoginOpen(false)}
         footer={[
           <Button key="submit" type="primary" onClick={handleSubmit}>
             <RiUserReceived2Line size={24} />

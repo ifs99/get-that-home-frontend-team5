@@ -4,6 +4,7 @@ import { RiCoinsFill, RiBuildingLine } from "react-icons/ri";
 import { BiDollarCircle, BiBed, BiBath, BiArea } from "react-icons/bi";
 import { FaPaw } from "react-icons/fa";
 import NoImageToDisplay from "../../assets/no-images.jpg";
+import { useNavigate } from "react-router";
 
 const Container = styled.div`
   width: 300px;
@@ -12,6 +13,7 @@ const Container = styled.div`
   border-top-right-radius: 0.5rem;
   border-top-left-radius: 0.5rem;
   box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
 `;
 
 const ImageContainer = styled.div`
@@ -116,7 +118,8 @@ const PropertyImage = styled.img`
   width: 100%;
   height: 100%;
   object-fit: contain;
-`
+  border-radius: 8px;
+`;
 
 function PropertyCard({
   location,
@@ -125,15 +128,18 @@ function PropertyCard({
   property_type,
   area,
   bathroom,
-  bedroom
+  bedroom,
+  id,
 }) {
+
+  const navigate = useNavigate()
+
   const image = name_image
     ? `https://gethomeprueba3.s3.us-west-2.amazonaws.com/${name_image}`
     : NoImageToDisplay;
 
-    
   return (
-    <Container>
+    <Container onClick={() => navigate(`/property/${id}`)}>
       <CardChip>
         <RiCoinsFill />
         <p>For Rental</p>

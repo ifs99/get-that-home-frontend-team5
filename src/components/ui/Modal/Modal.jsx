@@ -22,9 +22,9 @@ const CustomModal = styled(AntModal)`
   }
 `;
 
-function Modal({ title, open, onOk, footer, children }) {
+function Modal({ title, open, onOk, footer, children, onCancel }) {
   return (
-    <CustomModal title={title} open={open} onOk={onOk} footer={footer}>
+    <CustomModal title={title} open={open} onOk={onOk} footer={footer} onCancel={onCancel}>
       {children}
     </CustomModal>
   );

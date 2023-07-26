@@ -17,6 +17,7 @@ function LandlordActivedProperties() {
   useEffect(() => {
     getPropertiesactived().then((data) => setPropertiesactived(data));
   }, []);
+  console.log("Active: ",propertiesactived)
 
   const number_of_properties = countProperties(propertiesactived);
 

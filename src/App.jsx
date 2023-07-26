@@ -5,7 +5,7 @@ import { ConfigProvider } from "antd";
 
 function App() {
   const { user } = useAuth();
-  console.log("App: ", user);
+
   return (
     <ConfigProvider
       theme={{
