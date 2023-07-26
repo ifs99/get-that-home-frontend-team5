@@ -436,7 +436,7 @@ function NewPropertyForm() {
             </ImagesWrapper>
           </div>
           <div>
-            <Button type="primary">PUBLISH PROPERTY LISTING</Button>
+            <Button type="primary" onClick={() => navigate(`/property/${id}`)}>PUBLISH PROPERTY LISTING </Button>
           </div>
         </StyledPropertyForm>
       </NewPropertyWrapper>

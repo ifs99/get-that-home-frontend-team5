@@ -147,6 +147,12 @@ function LeftPropertyDetail({
   description,
   name_image,
 }) {
+  const address = location && location.length >= 3 ? location[2] : null;
+  const latitude =
+    location && location.length >= 1 ? parseFloat(location[0]) : 0;
+  const longitude =
+    location && location.length >= 2 ? parseFloat(location[1]) : 0;
+
   const ref = useRef();
   const images = name_image?.map(
     (img) => `https://gethomeprueba3.s3.us-west-2.amazonaws.com/${img}`
@@ -157,7 +163,8 @@ function LeftPropertyDetail({
   if (!isLoaded) {
     return <h1>cargando</h1>;
   }
-  const center = { lat: 48.8584, lng: 2.2945 };
+  const center = { lat: latitude, lng: longitude };
+
   return (
     <div>
       {images && (
@@ -196,8 +203,7 @@ function LeftPropertyDetail({
       <InformationContainer>
         <PDTitle>
           <PDAddress>
-            <Headline4>{location}</Headline4>
-            <Subtitle1>Miraflores</Subtitle1>
+            <Headline4>{address}</Headline4>
           </PDAddress>
           <PDPriceContainer>
             <PDPrice>

@@ -68,6 +68,9 @@ dependencies:
   typeface-inter:
     specifier: ^3.18.1
     version: 3.18.1
+  use-places-autocomplete:
+    specifier: ^4.0.0
+    version: 4.0.0(react@18.2.0)
 
 devDependencies:
   '@babel/cli':
@@ -11887,6 +11890,14 @@ packages:
         optional: true
     dependencies:
       '@types/react': 18.2.14
+      react: 18.2.0
+    dev: false
+
+  /use-places-autocomplete@4.0.0(react@18.2.0):
+    resolution: {integrity: sha512-w8jdm1iT3WXN0DPXtgyccJoBlAk/UetCMg466B2pBiWNBfvAIxdRoU6Gt4CzW11rWWuzpqnMG5hLxUOKSZBSgw==}
+    peerDependencies:
+      react: '>= 16.8.0'
+    dependencies:
       react: 18.2.0
     dev: false
 

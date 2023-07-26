@@ -27,5 +27,9 @@ export async function createProperty(property_data) {
 }
 
 export async function getProperty(id) {
-  return await ApiFetch(`/properties/${id}`);
+  try {
+    return await ApiFetch(`/properties/${id}`);
+  } catch (error) {
+    return { error: 'Failed to get property' };
+  }
 }

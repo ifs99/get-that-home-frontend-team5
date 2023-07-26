@@ -131,8 +131,7 @@ function PropertyCard({
   bedroom,
   id,
 }) {
-
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const image = name_image
     ? `https://gethomeprueba3.s3.us-west-2.amazonaws.com/${name_image[0]}`
@@ -161,7 +160,7 @@ function PropertyCard({
               </InfoContainer>
             </DataProp>
             <PropInfo>
-              <Sub1>{location}</Sub1>
+              <Sub1>{location[2]}</Sub1>
               <DataLabel>
                 <IconWrap>
                   <BiBed size={24} />

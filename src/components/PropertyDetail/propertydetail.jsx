@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 
 import LeftPropertyDetail from "./LeftPropertyDetail/LeftPropertyDetail";
 import RightPropertyDetail from "./RightPropertyDetail/RightPropertyDetail";
-import { useParams } from "react-router";
+import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { getProperty } from "../../services/propertyServices";
 
