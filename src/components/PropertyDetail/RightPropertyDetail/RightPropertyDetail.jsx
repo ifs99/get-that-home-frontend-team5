@@ -6,6 +6,7 @@ import { BiEdit } from "react-icons/bi";
 import { AiOutlineUserAdd } from "react-icons/ai";
 import { createFavorite, removefavorite } from "../../../services/propertyServices";
 import { useParams, useNavigate } from "react-router-dom";
+import { createContacted } from "../../../services/propertyServices";
 
 
 const PropertyCardInteractionBox = styled.div`
@@ -40,7 +41,7 @@ const Body1C = styled.p`
   text-align: center;
 `;
 
-function RightPropertyDetail({isFavorite}) {
+function RightPropertyDetail({isContacted , isFavorite}) {
   const { user } = useAuth();
 
   const {id} = useParams();
@@ -64,7 +65,14 @@ function RightPropertyDetail({isFavorite}) {
       console.error("Error creating favorite:", error);
     }
   }
-
+  async function handlecontacted() {
+    try {
+      await createContacted(id);
+      navigate("/contacted");
+    } catch (error) {
+      console.error("Error creating favorite:", error);
+    }
+  }
  
   return (
     <PropertyCardInteractionBox>
@@ -79,6 +87,7 @@ function RightPropertyDetail({isFavorite}) {
           ) : (
 
             <div>
+              {isContacted ? "it´s alrady contacted" : <button onClick={handlecontacted} >Contact</button> }
               {isFavorite ? <button onClick={handleunfavorite} >Remove Favorite</button> : <button onClick={handlefavorites} >Add favorites</button> }
             </div>
             

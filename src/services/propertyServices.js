@@ -62,6 +62,17 @@ export async function closeProperty(id) {
   });
 }
 
+export async function createContacted(id) {
+    
+  return await ApiFetch(`/contacted/${id}`, {
+      body: {
+          "contacted":true
+      },
+    }
+  
+  );
+}
+
 
 
 
