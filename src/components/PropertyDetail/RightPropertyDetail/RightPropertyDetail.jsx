@@ -45,7 +45,7 @@ function RightPropertyDetail() {
         {user ? (
           user.type_user.toLowerCase() === "landlord" ? (
             <Button type="primary">
-              <BiEdit />
+              <BiEdit size={24}/>
               EDIT PROPERTY
             </Button>
           ) : (

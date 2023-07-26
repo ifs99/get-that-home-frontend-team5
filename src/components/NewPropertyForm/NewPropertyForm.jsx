@@ -167,8 +167,6 @@ function NewPropertyForm() {
     images: [],
   });
 
-  const [propertyImages, setPropertyImages] = useState([])
-
   const {
     operation_type,
     location,
@@ -214,7 +212,6 @@ function NewPropertyForm() {
   };
 
   const handleBedrooms = (value) => {
-    console.log("asd");
     setPropertyForm({ ...propertyForm, bedrooms: value });
   };
 
@@ -260,10 +257,11 @@ function NewPropertyForm() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log(propertyForm);
+    console.log("property form: ", propertyForm);
+    let propertyImages = []
 
     for (const imageFile of propertyForm.images) {
-      setPropertyImages([...propertyImages, imageFile.details.name])
+      propertyImages.push(imageFile.details.name)
       const uploadParams = {
         Bucket: 'gethomeprueba3',
         Key: imageFile.details.name,
@@ -276,7 +274,6 @@ function NewPropertyForm() {
     console.log("ambas imagenes se subieron=======")
 
     const propertydata = {
-    
         operation_type: propertyForm.operation_type,
         location: propertyForm.location,
         price: propertyForm.monthly_rent,
@@ -290,9 +287,8 @@ function NewPropertyForm() {
         name_image: propertyImages
 
     }
-
-    console.log(propertydata)
-    console.log("New Property: ",propertyImages)
+    console.log("sent to form: ", propertydata)
+    console.log("Inicia la craecion")
     await createProperty(propertydata)
   };
 
