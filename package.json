@@ -30,7 +30,8 @@
     "react-scripts": "^5.0.1",
     "react-select": "^5.7.4",
     "sort-by": "^1.2.0",
-    "typeface-inter": "^3.18.1"
+    "typeface-inter": "^3.18.1",
+    "use-places-autocomplete": "^4.0.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.22.6",

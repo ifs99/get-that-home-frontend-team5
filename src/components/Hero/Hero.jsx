@@ -47,7 +47,8 @@ function Hero() {
       <HeroContent>
         <HeroTitle>Meet your new Home</HeroTitle>
         <HeroSlogan>The easiest way to find where you belong</HeroSlogan>
-        <Search />
+        {/* TODO: wait for backend to implements endppints with query parasm */}
+        {/* <Search /> */}
       </HeroContent>
     </HeroContainer>
   );
