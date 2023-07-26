@@ -18,6 +18,7 @@ import NewPropertyForm from "./components/NewPropertyForm/NewPropertyForm";
 import LandlordActivedProperties from "./components/Landlord/LandlordActivedProperties";
 import PropertiesList from "./components/PropertiesList/PropertiesList";
 import PropertyDetail from "./components/PropertyDetail/propertydetail";
+import GuestMainContainer from "./components//GuestMainContainer/GuestMainContainer";
 
 const MainContainer = styled.div`
   flex-grow: 1;
@@ -42,7 +43,7 @@ function AuthenticatedApp() {
       .catch((error) => console.log(error));
   }, []);
 
-  console.log("Authenticated: ", user)
+  console.log("Authenticated: ", user);
   return (
     <Layout>
       <Header />
@@ -53,16 +54,19 @@ function AuthenticatedApp() {
             <Route path="/active" element={<LandlordActivedProperties />} />
             <Route path="/closed" element={<Landlordclosedproperties />} />
             <Route path="/newproperty" element={<NewPropertyForm />} />
-            <Route path="/property/:id" element={<PropertyDetail/>}/>
+            <Route path="/property/:id" element={<PropertyDetail />} />
           </>
         ) : (
           <>
+            <Route index element={<Navigate to="/active" />} />
+            <Route path="/active" element={<GuestMainContainer />} />
             <Route
               path="/properties"
               element={<FindHome properties={properties} />}
             />
             <Route path="/favorites" element={<FavoriteProperties />} />
             <Route path="/contacted" element={<FavoriteContacted />} />
+            <Route path="/property/:id" element={<PropertyDetail />} />
           </>
         )}
       </Routes>
