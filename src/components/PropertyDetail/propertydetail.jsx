@@ -25,11 +25,13 @@ function PropertyDetail() {
   const { id } = useParams();
   const [propertyDetails, setPropertyDetails] = useState({});
   const [isFavorite, setIsFavorite] = useState(false);
+  const [isContacted, setIsContacted] = useState(false);
   
 
 
   useEffect(() => {
     checkFavorite(id).then((data) => setIsFavorite(data[0].favorite));
+    checkFavorite(id).then((data) => setIsContacted(data[0].contacted));
     getProperty(id).then((data) => setPropertyDetails(data));
   }, []);
 
@@ -38,7 +40,7 @@ function PropertyDetail() {
     <MainContainer>
       <PropertyDetailWrapper>
         <LeftPropertyDetail {...propertyDetails} />
-        <RightPropertyDetail isFavorite = {isFavorite} />
+        <RightPropertyDetail isContacted={isContacted} isFavorite = {isFavorite} />
       </PropertyDetailWrapper>
     </MainContainer>
   );
