@@ -6,6 +6,7 @@ import { useRef } from "react";
 import { typography } from "../../../styles";
 import { BiDollarCircle, BiBed, BiBath, BiArea } from "react-icons/bi";
 import { FaPaw } from "react-icons/fa";
+import { useJsApiLoader, MarkerF, GoogleMap } from "@react-google-maps/api";
 
 const CarouselContainer = styled.div`
   display: flex;
@@ -130,10 +131,10 @@ const InformationContainer = styled.div`
   gap: 1rem;
 `;
 
-const CarouselImageContainer = styled.div `
+const CarouselImageContainer = styled.div`
   display: flex !important;
   justify-content: center;
-`
+`;
 
 function LeftPropertyDetail({
   area,
@@ -150,7 +151,13 @@ function LeftPropertyDetail({
   const images = name_image?.map(
     (img) => `https://gethomeprueba3.s3.us-west-2.amazonaws.com/${img}`
   );
-
+  const { isLoaded } = useJsApiLoader({
+    googleMapsApiKey: "AIzaSyDIBNTfFRaaRM9D-d3XW0Ue3qDxZIo1T9M",
+  });
+  if (!isLoaded) {
+    return <h1>cargando</h1>;
+  }
+  const center = { lat: 48.8584, lng: 2.2945 };
   return (
     <div>
       {images && (
@@ -171,10 +178,7 @@ function LeftPropertyDetail({
           >
             {images.map((image, index) => {
               return (
-                <CarouselImageContainer
-                  key={index}
-                  className="Hola"
-                >
+                <CarouselImageContainer key={index} className="Hola">
                   <img src={image} alt="image" />
                 </CarouselImageContainer>
               );
@@ -237,7 +241,20 @@ function LeftPropertyDetail({
         </PDAbout>
         <PDMap>
           <Headline6 style={{ color: `#BF5F82` }}>Location</Headline6>
-          <div>image here</div>
+          <Body1>Address</Body1>
+          <GoogleMap
+            center={center}
+            zoom={15}
+            mapContainerStyle={{ width: "47.5rem", height: "47.5rem" }}
+            options={{
+              zoomControl: false,
+              streetViewControl: false,
+              fullscreenControl: false,
+              mapTypeControl: false,
+            }}
+          >
+            <MarkerF position={center} />
+          </GoogleMap>
         </PDMap>
       </InformationContainer>
     </div>

@@ -10,11 +10,16 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@aws-sdk/client-s3": "^3.374.0",
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
+    "@react-google-maps/api": "^2.19.0",
     "@react-icons/all-files": "^4.1.0",
     "antd": "^5.7.1",
+    "aws-sdk": "^2.1419.0",
+    "dotenv": "^16.3.1",
     "formik": "^2.4.2",
+    "fs": "^0.0.1-security",
     "localforage": "^1.10.0",
     "match-sorter": "^6.3.1",
     "react": "^18.2.0",
@@ -22,13 +27,10 @@
     "react-error-boundary": "^4.0.10",
     "react-icons": "^4.10.1",
     "react-router-dom": "^6.14.1",
+    "react-scripts": "^5.0.1",
     "react-select": "^5.7.4",
     "sort-by": "^1.2.0",
-    "typeface-inter": "^3.18.1",
-    "@aws-sdk/client-s3": "^3.374.0",
-    "aws-sdk": "^2.1419.0",
-    "dotenv": "^16.3.1",
-    "fs": "^0.0.1-security"
+    "typeface-inter": "^3.18.1"
   },
   "devDependencies": {
     "@babel/cli": "^7.22.6",

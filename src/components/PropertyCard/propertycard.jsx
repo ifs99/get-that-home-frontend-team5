@@ -4,7 +4,7 @@ import { RiCoinsFill, RiBuildingLine } from "react-icons/ri";
 import { BiDollarCircle, BiBed, BiBath, BiArea } from "react-icons/bi";
 import { FaPaw } from "react-icons/fa";
 import NoImageToDisplay from "../../assets/no-images.jpg";
-import { useNavigate } from "react-router";
+import { useNavigate } from "react-router-dom";
 
 const Container = styled.div`
   width: 300px;
