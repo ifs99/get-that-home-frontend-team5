@@ -11,6 +11,7 @@ import { S3Client, PutObjectCommand } from "@aws-sdk/client-s3";
 import manu from "../../assets/blobManual.png";
 import { createProperty } from "../../services/propertyServices";
 import usePlacesAutocomplete from "use-places-autocomplete";
+import { useNavigate } from "react-router-dom";
 
 // const bucketName = process.env.AWS_BUCKET_NAME
 // const region = process.env.AWS_BUCKET_REGION
@@ -152,6 +153,7 @@ const PhotosDescription = styled.div`
 `;
 
 function NewPropertyForm() {
+  const navigate = useNavigate();
   const [propertyForm, setPropertyForm] = useState({
     operation_type: "Rent",
     location: "",
@@ -282,6 +284,7 @@ function NewPropertyForm() {
     };
 
     await createProperty(propertydata);
+    navigate(`/active`)
   };
 
   const inputRef = useRef();
@@ -436,7 +439,7 @@ function NewPropertyForm() {
             </ImagesWrapper>
           </div>
           <div>
-            <Button type="primary" onClick={() => navigate(`/active`)}>
+            <Button type="primary" >
               PUBLISH PROPERTY LISTING{" "}
             </Button>
           </div>
