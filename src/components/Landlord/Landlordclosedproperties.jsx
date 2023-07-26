@@ -1,74 +1,31 @@
-import Button from "../ui/button";
 import { getPropertiesclosed } from "../../services/propertyServices";
 import PropertiesList from "../PropertiesList/PropertiesList";
 import { useState, useEffect } from "react";
-import { FaPlusCircle } from "react-icons/fa";
-import { NavLink } from "react-router-dom";
 import styled from "@emotion/styled";
-import { colors } from "../../styles";
+import LandlordHeader from "./Header/LandlordHeader";
+import { countProperties } from "../../Utils/utils";
 
-const NavWord = styled(NavLink)`
-border: none;
-cursor: pointer;
-padding: 0.625rem;
-background-color: ${colors.background};
-color: ${colors.stone[400]};
-display: flex;
-justify-content: center;
-align-items: center;
-width: 59px;
-height: 59px;
-&:active {
-  color: ${colors.stone[600]};
-}
+const MainContainer = styled.div`
+  flex-grow: 1;
+  max-width: 1200px;
+  margin: auto;
 `;
 
-const NavDiv = styled.div`
-  display: flex;
-  justify-content: left;
-  align-items: left;
-  gap: 50px;
-`;
+function Landlordclosedproperties() {
+  const [propertiesactived, setPropertiesactived] = useState([]);
 
-function Landlordclosedproperties(){
-    const [propertiesactived, setPropertiesactived] = useState ([]);
+  useEffect(() => {
+    getPropertiesclosed().then((data) => setPropertiesactived(data));
+  }, []);
 
-        useEffect (() => {
-        getPropertiesclosed().then((data) => setPropertiesactived(data));
-        }, []);
-   
-     function   handleAddProperty(){
+  const number_of_properties = countProperties(propertiesactived);
 
-     }
-    
-    return(
-        <>
-        <Button type="primary" onClick={handleAddProperty}>
-            <FaPlusCircle size={24} />
-            NEW PROPERTY
-        </Button>
-        <NavDiv>
-                <NavWord
-                to={"/active"}
-                style={({ isActive }) => ({
-                color: isActive ? colors.stone[600] : colors.stone[400],
-                })}
-            >
-            ACTIVE
-            </NavWord>
-            <NavWord
-                to={"/closed"}
-                style={({ isActive }) => ({
-                color: isActive ? colors.stone[600] : colors.stone[400],
-                })}
-            >
-            CLOSED
-            </NavWord>
-        </NavDiv>
-        <PropertiesList properties = {propertiesactived}/>
-        </>
-
-    )
+  return (
+    <MainContainer>
+      <LandlordHeader number_of_properties={number_of_properties} />
+      <PropertiesList properties={propertiesactived} />
+    </MainContainer>
+  );
 }
 
-export default Landlordclosedproperties
+export default Landlordclosedproperties;
