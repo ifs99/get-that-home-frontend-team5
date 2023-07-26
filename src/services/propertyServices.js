@@ -44,6 +44,10 @@ export async function createFavorite(id) {
   );
 }
 
+export async function removefavorite(id) {
+  return await ApiFetch(`/favorites/${id}`, {method: "DELETE"});
+}
+
 export async function checkFavorite(id) {
   return await ApiFetch(`/interaction/${id}`);
 }

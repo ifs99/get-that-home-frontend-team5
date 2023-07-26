@@ -4,8 +4,9 @@ import { typography } from "../../../styles";
 import { useAuth } from "../../../context/AuthContext";
 import { BiEdit } from "react-icons/bi";
 import { AiOutlineUserAdd } from "react-icons/ai";
-import { createFavorite } from "../../../services/propertyServices";
+import { createFavorite, removefavorite } from "../../../services/propertyServices";
 import { useParams, useNavigate } from "react-router-dom";
+
 
 const PropertyCardInteractionBox = styled.div`
   max-width: 290px;
@@ -53,22 +54,32 @@ function RightPropertyDetail({isFavorite}) {
        console.error("Error creating favorite:", error);
      }
    }
-   console.log("holaaa")
-   console.log(isFavorite)
+   
+
+   async function handleunfavorite() {
+    try {
+      await removefavorite(id);
+      navigate("/favorites");
+    } catch (error) {
+      console.error("Error creating favorite:", error);
+    }
+  }
+
  
   return (
     <PropertyCardInteractionBox>
       <PropertyContact>
         {user ? (
           user.type_user.toLowerCase() === "landlord" ? (
-            <Button type="primary">
-              <BiEdit size={24}/>
-              EDIT PROPERTY
-            </Button>
+            // <Button type="primary">
+            //   <BiEdit size={24}/>
+            //   EDIT PROPERTY
+            // </Button>
+            <></>
           ) : (
 
             <div>
-              {isFavorite ? "is favorite" : <button onClick={handlefavorites} >Add favorites</button> }
+              {isFavorite ? <button onClick={handleunfavorite} >Remove Favorite</button> : <button onClick={handlefavorites} >Add favorites</button> }
             </div>
             
           )
