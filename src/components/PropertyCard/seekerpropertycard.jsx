@@ -121,7 +121,13 @@ const PropertyImage = styled.img`
   border-radius: 8px;
 `;
 
-function PropertyCard({
+const ButtonContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+`;
+
+function SeekerPropertyCard({
   location,
   name_image,
   price,
@@ -185,4 +191,4 @@ function PropertyCard({
   );
 }
 
-export default PropertyCard;
+export default SeekerPropertyCard;
