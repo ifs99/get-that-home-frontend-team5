@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
-import { Checkbox, Radio } from "antd";
-import { useState } from "react";
+import { Checkbox, Radio, Select } from "antd";
+import { useEffect, useRef, useState } from "react";
 import Input from "../ui/Input/Input";
 import CustomSelect from "../ui/CustomSelect/CustomSelect";
 import TextArea from "antd/es/input/TextArea";
@@ -8,8 +8,9 @@ import Button from "../ui/button";
 import "./newpropertyform.css";
 import { S3Client, PutObjectCommand } from "@aws-sdk/client-s3";
 
-import manu from '../../assets/blobManual.png'
+import manu from "../../assets/blobManual.png";
 import { createProperty } from "../../services/propertyServices";
+import usePlacesAutocomplete from "use-places-autocomplete";
 
 // const bucketName = process.env.AWS_BUCKET_NAME
 // const region = process.env.AWS_BUCKET_REGION
@@ -41,8 +42,6 @@ async function uploadFile(pathFile) {
   const response = await client.send(command);
   return response;
 }
-
-
 
 const NewPropertyFormContainer = styled.div`
   flex-grow: 1;
@@ -167,6 +166,9 @@ function NewPropertyForm() {
     images: [],
   });
 
+  const [latitude, setLatitude] = useState(null);
+  const [longitude, setLongitude] = useState(null);
+
   const {
     operation_type,
     location,
@@ -184,11 +186,6 @@ function NewPropertyForm() {
   const options = [
     { label: "Rent", value: "Rent" },
     { label: "Sale", value: "Sale" },
-  ];
-
-  const options2 = [
-    { label: "Apartment", value: "Apartment" },
-    { label: "House", value: "House" },
   ];
 
   const onOperationTypeChange = ({ target: { value } }) => {
@@ -257,13 +254,12 @@ function NewPropertyForm() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log("property form: ", propertyForm);
-    let propertyImages = []
+    let propertyImages = [];
 
     for (const imageFile of propertyForm.images) {
-      propertyImages.push(imageFile.details.name)
+      propertyImages.push(imageFile.details.name);
       const uploadParams = {
-        Bucket: 'gethomeprueba3',
+        Bucket: "gethomeprueba3",
         Key: imageFile.details.name,
         Body: imageFile.details,
       };
@@ -271,28 +267,51 @@ function NewPropertyForm() {
       await client.send(command);
     }
 
-    console.log("ambas imagenes se subieron=======")
-
     const propertydata = {
-        operation_type: propertyForm.operation_type,
-        location: propertyForm.location,
-        price: propertyForm.monthly_rent,
-        property_type: propertyForm.property_type,
-        maintanance: propertyForm.maintanance,
-        bathroom: propertyForm.bathrooms,
-        petfriendly: propertyForm.pets_allowed,
-        bedroom: propertyForm.bedrooms,
-        area: propertyForm.area,
-        description: propertyForm.about_property,
-        name_image: propertyImages
+      operation_type: propertyForm.operation_type,
+      location: [latitude, longitude, inputRef.current.value],
+      price: propertyForm.monthly_rent,
+      property_type: propertyForm.property_type,
+      maintanance: propertyForm.maintanance,
+      bathroom: propertyForm.bathrooms,
+      petfriendly: propertyForm.pets_allowed,
+      bedroom: propertyForm.bedrooms,
+      area: propertyForm.area,
+      description: propertyForm.about_property,
+      name_image: propertyImages,
+    };
 
-    }
-    console.log("sent to form: ", propertydata)
-    console.log("Inicia la craecion")
-    await createProperty(propertydata)
+    await createProperty(propertydata);
   };
 
-  
+  const inputRef = useRef();
+  const autoComplete = new window.google.maps.places.Autocomplete(
+    inputRef.current
+  );
+  const inputStyle = {
+    boxShadow: "inset 0 0 10px #eee !important",
+    border: "1px solid #BF5F82",
+    height: "40px",
+    width: "100%",
+    borderRadius: "8px",
+    fontWeight: "300 !important",
+    borderColor: "#F48FB1",
+    outline: "none",
+    padding: "10px 20px",
+    marginBottom: "10px",
+  };
+
+  autoComplete.addListener("place_changed", () => {
+    const place = autoComplete.getPlace();
+    if (!place.geometry || !place.geometry.location) {
+      alert("this location not available");
+    }
+    if (place.geometry.viewport || place.geometry.location) {
+      setLatitude(place.geometry.location.lat());
+      setLongitude(place.geometry.location.lng());
+    }
+  });
+
   return (
     <NewPropertyFormContainer>
       <NewPropertyWrapper>
@@ -308,12 +327,20 @@ function NewPropertyForm() {
               buttonStyle="solid"
             />
           </OperationTypeWrapper>
-          <Input
+          <div style={{ display: "flex", flexDirection: "column" }}>
+            <StyledInputLabel>ADDRESS</StyledInputLabel>
+            <input
+              placeholder="type your location"
+              ref={inputRef}
+              style={inputStyle}
+            />
+          </div>
+          {/* <Input
             value={location}
             onChange={handleLocationChange}
             label="ADDRESS"
             placeholder="start typing to autocomplete"
-          />
+          /> */}
           <Input
             label="MONTLY RENT"
             type="number"
