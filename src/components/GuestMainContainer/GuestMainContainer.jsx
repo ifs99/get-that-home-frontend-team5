@@ -6,6 +6,7 @@ import Hero from "../Hero/Hero";
 import CreateAccount from "../CreateAccount/CreateAccount";
 import PropertiesList from "../PropertiesList/PropertiesList";
 import MeetTeam from "../MeetTeam/MeetTeam";
+import { useAuth } from "../../context/AuthContext";
 
 const CardContainer = styled.div`
   display: flex;
@@ -31,6 +32,7 @@ const Sub2 = styled.p`
 `;
 
 function GuestMainContainer({ properties }) {
+  const{user} = useAuth()
   console.log("guest main: ", properties);
   return (
     <Container type="main">

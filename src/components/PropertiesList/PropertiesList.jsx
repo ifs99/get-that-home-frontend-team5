@@ -1,7 +1,9 @@
 import LandlordPropertyCard from "../PropertyCard/landlordpropertycard";
+import SeekerPropertyCard from "../PropertyCard/seekerpropertycard";
 import styled from "@emotion/styled";
+import { useAuth } from "../../context/AuthContext";
 
-const PropertiesListMainContianer = styled.div`
+const PropertiesListMainContainer = styled.div`
   flex-grow: 1;
   margin: auto;
   width: 1200px;
@@ -17,15 +19,23 @@ const PropertiesListContainer = styled.div`
 `;
 
 function PropertiesList({ properties }) {
+  const { user } = useAuth();
 
   return (
-    <PropertiesListMainContianer>
+    <PropertiesListMainContainer>
       <PropertiesListContainer>
-        {properties?.map((property) => (
-          <LandlordPropertyCard key={property.id} {...property} />
-        ))}
+        {properties?.map((property) => {
+          // Check if the user is a landlord or a seeker and render the corresponding component
+          if (!user) {
+            return <SeekerPropertyCard key={property.id} {...property} />;
+          } else if (user.type_user === "Landlord") {
+            return <LandlordPropertyCard key={property.id} {...property} />;
+          } else if (user.type_user === "homeseeker") {
+          }
+          return <SeekerPropertyCard key={property.id} {...property} />;
+        })}
       </PropertiesListContainer>
-    </PropertiesListMainContianer>
+    </PropertiesListMainContainer>
   );
 }
 
